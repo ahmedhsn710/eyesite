@@ -6,7 +6,8 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                        {{-- <x-application-logo class="block h-9 w-auto fill-current text-gray-800" /> --}}
+                        <img src="{{ asset('images/logo.png') }}" alt="" class="block h-9 w-auto fill-current text-gray-800" style="height: 80px; padding-top:5px">
                     </a>
                 </div>
 
@@ -19,9 +20,6 @@
                     @endauth
                     <x-nav-link :href="route('eyetest')" :active="request()->routeIs('eyetest')">
                         {{ __('Eye Test') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('About Us')" :active="request()->routeIs('About Us')">
-                        {{ __('About Us') }}
                     </x-nav-link>
                     @auth
                     <x-nav-link :href="route('reports')" :active="request()->routeIs('reports')">
@@ -38,11 +36,10 @@
                     <x-nav-link :href="route('chat')" :active="request()->routeIs('chat')">
                         {{ __('Chat') }}
                     </x-nav-link> 
-                    @else
-                    <x-nav-link :href="route('login')" :active="request()->routeIs('login')">
-                        {{ __('Login/Register') }}
-                    </x-nav-link>
-                    @endauth              
+                    @endauth
+                    <x-nav-link :href="route('About Us')" :active="request()->routeIs('About Us')">
+                        {{ __('About Us') }}
+                    </x-nav-link>     
                 </div>
                 
             </div>
@@ -83,7 +80,13 @@
                     </x-slot>
                 </x-dropdown>
             </div>
-            
+            @else 
+            <div class="hidden sm:flex sm:items-center sm:ml-6">
+                <x-nav-link :href="route('login')" :active="request()->routeIs('login')">
+                    {{ __('Login/Register') }}
+                </x-nav-link>
+            </div>
+            @endauth            
 
             <!-- Hamburger -->
             <div class="-mr-2 flex items-center sm:hidden">
@@ -94,17 +97,12 @@
                     </svg>
                 </button>
             </div>
-            @endauth
+            
         </div>
     </div>
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
-        </div>
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
@@ -112,30 +110,57 @@
                 @auth
                 <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
                 <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
-                @else
-                    <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
-
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
-                    @endif
                 @endauth
             </div>
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
-                </x-responsive-nav-link>
-
-                <!-- Authentication -->
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-
-                    <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                @auth
+                    <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('Dashboard') }}
                     </x-responsive-nav-link>
-                </form>
+                @else 
+                    <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">
+                        {{ __('Login/Register') }}
+                    </x-responsive-nav-link>
+                @endauth
+                    <x-responsive-nav-link :href="route('eyetest')" :active="request()->routeIs('eyetest')">
+                        {{ __('Eye Test') }}
+                    </x-responsive-nav-link>
+                @auth
+                    <x-responsive-nav-link :href="route('reports')" :active="request()->routeIs('reports')">
+                        {{ __('Reports') }}
+                    </x-responsive-nav-link>
+                @endauth
+                    <x-responsive-nav-link :href="route('articles')" :active="request()->routeIs('articles')">
+                        {{ __('Articles') }}
+                    </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('hospitals')" :active="request()->routeIs('hospitals')">
+                        {{ __('Hospitals') }}
+                    </x-responsive-nav-link>
+                @auth
+                    <x-responsive-nav-link :href="route('chat')" :active="request()->routeIs('chat')">
+                        {{ __('Chat') }}
+                    </x-responsive-nav-link> 
+                @endauth
+                    <x-responsive-nav-link :href="route('About Us')" :active="request()->routeIs('About Us')">
+                        {{ __('About Us') }}
+                    </x-responsive-nav-link>
+                @auth    
+                    <x-responsive-nav-link :href="route('profile.edit')">
+                        {{ __('Profile') }}
+                    </x-responsive-nav-link>
+
+                    <!-- Authentication -->
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <x-responsive-nav-link :href="route('logout')"
+                                onclick="event.preventDefault();
+                                            this.closest('form').submit();">
+                            {{ __('Log Out') }}
+                        </x-responsive-nav-link>
+                    </form>
+                @endauth
             </div>
         </div>
     </div>
