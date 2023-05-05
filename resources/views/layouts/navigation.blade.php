@@ -12,37 +12,50 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    @auth
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    @endauth
                     <x-nav-link :href="route('eyetest')" :active="request()->routeIs('eyetest')">
-                        {{ __('Eyetest') }}
+                        {{ __('Eye Test') }}
                     </x-nav-link>
                     <x-nav-link :href="route('About Us')" :active="request()->routeIs('About Us')">
                         {{ __('About Us') }}
                     </x-nav-link>
+                    @auth
                     <x-nav-link :href="route('reports')" :active="request()->routeIs('reports')">
                         {{ __('Reports') }}
                     </x-nav-link>
+                    @endauth
                     <x-nav-link :href="route('articles')" :active="request()->routeIs('articles')">
                         {{ __('Articles') }}
                     </x-nav-link>
                     <x-nav-link :href="route('hospitals')" :active="request()->routeIs('hospitals')">
                         {{ __('Hospitals') }}
                     </x-nav-link>
+                    @auth
                     <x-nav-link :href="route('chat')" :active="request()->routeIs('chat')">
                         {{ __('Chat') }}
-                    </x-nav-link>               
+                    </x-nav-link> 
+                    @else
+                    <x-nav-link :href="route('login')" :active="request()->routeIs('login')">
+                        {{ __('Login/Register') }}
+                    </x-nav-link>
+                    @endauth              
                 </div>
                 
             </div>
 
+            @auth
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                            
                             <div>{{ Auth::user()->name }}</div>
+                            
 
                             <div class="ml-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -70,6 +83,7 @@
                     </x-slot>
                 </x-dropdown>
             </div>
+            
 
             <!-- Hamburger -->
             <div class="-mr-2 flex items-center sm:hidden">
@@ -80,6 +94,7 @@
                     </svg>
                 </button>
             </div>
+            @endauth
         </div>
     </div>
 
@@ -94,8 +109,16 @@
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="px-4">
+                @auth
                 <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
                 <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                @else
+                    <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
+
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+                    @endif
+                @endauth
             </div>
 
             <div class="mt-3 space-y-1">
