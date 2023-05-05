@@ -22,6 +22,10 @@ Route::get('/eyetest', function () {
     return view('eyetest');
 })->name('eyetest');
 
+Route::get('/About Us', function () {
+    return view('AboutUs');
+})->name('About Us');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
