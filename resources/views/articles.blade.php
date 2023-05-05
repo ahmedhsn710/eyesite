@@ -4,7 +4,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="max-w-7xl mx-auto p-6 lg:p-8">
                     
-                    <h1>Eye test</h1>
+                    <h1>Articles</h1>
 
 
                 </div>
