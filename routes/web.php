@@ -22,6 +22,10 @@ Route::get('/eyetest', function () {
     return view('eyetest');
 })->name('eyetest');
 
+Route::get('/About Us', function () {
+    return view('AboutUs');
+})->name('About Us');
+
 Route::get('/reports', function () {
     return view('reports');
 })->name('reports');
