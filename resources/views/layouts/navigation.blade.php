@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('eyetest')" :active="request()->routeIs('eyetest')">
                         {{ __('Eyetest') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('About Us')" :active="request()->routeIs('About Us')">
+                        {{ __('About Us') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('reports')" :active="request()->routeIs('reports')">
                         {{ __('Reports') }}
                     </x-nav-link>
@@ -31,6 +34,7 @@
                         {{ __('Chat') }}
                     </x-nav-link>               
                 </div>
+                
             </div>
 
             <!-- Settings Dropdown -->
