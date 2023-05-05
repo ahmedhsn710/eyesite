@@ -26,6 +26,23 @@ Route::get('/About Us', function () {
     return view('AboutUs');
 })->name('About Us');
 
+Route::get('/reports', function () {
+    return view('reports');
+})->name('reports');
+
+Route::get('/hospitals', function () {
+    return view('hospitals');
+})->name('hospitals');
+
+Route::get('/articles', function () {
+    return view('articles');
+})->name('articles');
+
+Route::get('/chat', function () {
+    return view('chat');
+})->name('chat');
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
