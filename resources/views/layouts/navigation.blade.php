@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('eyetest')" :active="request()->routeIs('eyetest')">
                         {{ __('eyetest') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('eyetest')" :active="request()->routeIs('eyetest')">
+                        {{ __('eyetest') }}
+                    </x-nav-link>
                 </div>
             </div>
 
