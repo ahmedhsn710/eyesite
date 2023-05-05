@@ -16,11 +16,20 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     <x-nav-link :href="route('eyetest')" :active="request()->routeIs('eyetest')">
-                        {{ __('eyetest') }}
+                        {{ __('Eyetest') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('eyetest')" :active="request()->routeIs('eyetest')">
-                        {{ __('eyetest') }}
+                    <x-nav-link :href="route('reports')" :active="request()->routeIs('reports')">
+                        {{ __('Reports') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('Articles')" :active="request()->routeIs('Articles')">
+                        {{ __('Articles') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('hospitals')" :active="request()->routeIs('hospitals')">
+                        {{ __('Hospitals') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('chat')" :active="request()->routeIs('chat')">
+                        {{ __('Chat') }}
+                    </x-nav-link>               
                 </div>
             </div>
 
