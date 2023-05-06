@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Models\Article;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +32,9 @@ Route::get('/hospitals', function () {
 })->name('hospitals');
 
 Route::get('/articles', function () {
-    return view('articles');
+    return view('articles', [
+        'articles' => Article::all()
+    ]);
 })->name('articles');
 
 Route::get('/chat', function () {
