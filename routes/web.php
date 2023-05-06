@@ -46,6 +46,10 @@ Route::get('/eyetest/reactionspeedtest', function () {
     return view('reactionspeedtest');
 })->name('reactionspeedtest');
 
+Route::get('/eyetest/colorblindnesstest', function () {
+    return view('colorblindnesstest');
+})->name('colorblindnesstest');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
