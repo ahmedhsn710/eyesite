@@ -26,8 +26,6 @@ Route::get('/About Us', function () {
     return view('AboutUs');
 })->name('About Us');
 
-
-
 Route::get('/hospitals', function () {
     return view('hospitals');
 })->name('hospitals');
@@ -39,6 +37,14 @@ Route::get('/articles', function () {
 Route::get('/chat', function () {
     return view('chat');
 })->name('chat');
+
+Route::get('/eyetest/eyesighttest', function () {
+    return view('eyesighttest');
+})->name('eyesighttest');
+
+Route::get('/eyetest/reactionspeedtest', function () {
+    return view('reactionspeedtest');
+})->name('reactionspeedtest');
 
 
 Route::get('/dashboard', function () {
