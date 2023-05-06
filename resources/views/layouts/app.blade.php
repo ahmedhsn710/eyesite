@@ -20,6 +20,11 @@
                 font-family: 'Fredoka', sans-serif;
             }
         </style>
+        @if (Request::is('eyetest/colorblindnesstest'))
+            <script src="../js/colorblindnesstest.js"></script>
+        @endif
+    
+        
     </head>
     <body>
         <div class="min-h-screen bg-gray-100">
