@@ -40,6 +40,10 @@ Route::get('/chat', function () {
     return view('chat');
 })->name('chat');
 
+Route::get('/eyetest/colorblindnesstest', function () {
+    return view('colorblindnesstest');
+})->name('colorblindnesstest');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
