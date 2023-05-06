@@ -6,11 +6,14 @@
                     <div class="order-md-first">
                         <img src="{{ asset('images/eyeforsite.png') }}" alt="Image" class="img-fluid">
                     </div>
-                    <div class="order-md-last mb-3 mb-md-0 md:py-10" style="margin-left: 20px !important">
-                        <div class="ml-md-5 !important">
-                            <h2 style="padding-top: 30px; padding-bottom:30px; font-family:'Fredoka', Courier, monospace; font-weight:bold; font-size:50px;">Eye Site</h2>
-                            <p style="padding-top: 10px; padding-bottom:20px; font-family:'Fredoka', Courier, monospace;">Welcome to Eye Site, the online platform for testing your eye health! With our simple and easy-to-use system, you can test your eyesight from the comfort of your own home. Can't believe, take the test now!</p>
-                            <a href="/eyetest" class="btn btn-primary">Take the test</a>
+                    <div class="col-6 order-md-last mb-3 mb-md-0 md:py-10" style="margin-left: 20px !important">
+                        <div class="row">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8">
+                                <h2 style="padding-top: 30px; padding-bottom:30px; font-family:'Fredoka', Courier, monospace; font-weight:bold; font-size:50px;">Eye Site</h2>
+                                <p style="padding-top: 10px; padding-bottom:20px; font-family:'Fredoka', Courier, monospace;">Welcome to Eye Site, the online platform for testing your eye health! With our simple and easy-to-use system, you can test your eyesight from the comfort of your own home. Can't believe, take the test now!</p>
+                                <a href="/eyetest" class="btn btn-primary">Take the test</a>
+                            </div>
                         </div>
                     </div>
                 </div>

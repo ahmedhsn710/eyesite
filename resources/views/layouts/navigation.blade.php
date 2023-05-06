@@ -5,10 +5,17 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
+                    @auth
                     <a href="{{ route('dashboard') }}">
                         {{-- <x-application-logo class="block h-9 w-auto fill-current text-gray-800" /> --}}
                         <img src="{{ asset('images/logo.png') }}" alt="" class="block h-9 w-auto fill-current text-gray-800" style="height: 80px; padding-top:5px">
                     </a>
+                    @else
+                    <a href="{{ route('welcome') }}">
+                        {{-- <x-application-logo class="block h-9 w-auto fill-current text-gray-800" /> --}}
+                        <img src="{{ asset('images/logo.png') }}" alt="" class="block h-9 w-auto fill-current text-gray-800" style="height: 80px; padding-top:5px">
+                    </a>
+                    @endauth
                 </div>
 
                 <!-- Navigation Links -->
@@ -81,9 +88,12 @@
                 </x-dropdown>
             </div>
             @else 
-            <div class="hidden sm:flex sm:items-center sm:ml-6">
+            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                 <x-nav-link :href="route('login')" :active="request()->routeIs('login')">
-                    {{ __('Login/Register') }}
+                    {{ __('Login') }}
+                </x-nav-link>
+                <x-nav-link :href="route('register')" :active="request()->routeIs('register')">
+                    {{ __('Register') }}
                 </x-nav-link>
             </div>
             @endauth            
@@ -120,7 +130,10 @@
                     </x-responsive-nav-link>
                 @else 
                     <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">
-                        {{ __('Login/Register') }}
+                        {{ __('Login') }}
+                    </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('register')" :active="request()->routeIs('register')">
+                        {{ __('Register') }}
                     </x-responsive-nav-link>
                 @endauth
                     <x-responsive-nav-link :href="route('eyetest')" :active="request()->routeIs('eyetest')">
