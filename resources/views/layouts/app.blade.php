@@ -21,7 +21,7 @@
             }
         </style>
         @if (Request::is('eyetest/colorblindnesstest'))
-            <script src="../js/colorblindnesstest.js"></script>
+            <script src="../js/colorblindnesstest.js" defer></script>
         @endif
     
         
