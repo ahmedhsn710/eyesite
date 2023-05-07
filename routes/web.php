@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,24 +27,29 @@ Route::get('/About Us', function () {
     return view('AboutUs');
 })->name('About Us');
 
-
-
 Route::get('/hospitals', function () {
     return view('hospitals');
 })->name('hospitals');
 
-Route::get('/articles', function () {
-    return view('articles');
-})->name('articles');
+Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
+
+Route::get('/articles/{article}', [ArticleController::class, 'show'])->name('articles.show');
 
 Route::get('/chat', function () {
     return view('chat');
 })->name('chat');
 
+Route::get('/eyetest/eyesighttest', function () {
+    return view('eyesighttest');
+})->name('eyesighttest');
+
+Route::get('/eyetest/reactionspeedtest', function () {
+    return view('reactionspeedtest');
+})->name('reactionspeedtest');
+
 Route::get('/eyetest/colorblindnesstest', function () {
     return view('colorblindnesstest');
 })->name('colorblindnesstest');
-
 
 Route::get('/dashboard', function () {
     return view('dashboard');
