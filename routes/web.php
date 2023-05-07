@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Article;
+use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 
@@ -31,17 +31,9 @@ Route::get('/hospitals', function () {
     return view('hospitals');
 })->name('hospitals');
 
-Route::get('/articles', function () {
-    return view('articles/index', [
-        'articles' => Article::all()
-    ]);
-})->name('articles');
+Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
 
-Route::get('/articles/{article}', function (Article $article) {
-    return view('articles/show', [
-        'article' => $article
-    ]);
-})->name('article');
+Route::get('/articles/{article}', [ArticleController::class, 'show'])->name('articles.show');
 
 Route::get('/chat', function () {
     return view('chat');
@@ -58,7 +50,6 @@ Route::get('/eyetest/reactionspeedtest', function () {
 Route::get('/eyetest/colorblindnesstest', function () {
     return view('colorblindnesstest');
 })->name('colorblindnesstest');
-
 
 Route::get('/dashboard', function () {
     return view('dashboard');
