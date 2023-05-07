@@ -135,7 +135,7 @@ const cbTest = {
     },
     "trial34" : {
         "image": "../images/colorblindnesstest/34.png",
-        "answer": "8"
+        "answer": "7"
     },
     "trial35" : {
         "image": "../images/colorblindnesstest/35.png",
@@ -156,14 +156,14 @@ function displayRandomTrials() {
     // Display the first 5 trials
     let trialIndex = 0;
     function displayNextTrial() {
-      if (trialIndex < 20) {
+      if (trialIndex < 2) {
         const trial = trialsArray[trialIndex][1];
         const image = trial.image;
         console.log(`Displaying image ${trialIndex+1}: ${image}`);
         trialIndex++;
         setTimeout(displayNextTrial, 1000); // Display next trial after 1 second
         const imageDiv = document.getElementById("testimage");
-        imageDiv.innerHTML = `<img src="${image}" alt="Fun fact image">`;
+        imageDiv.innerHTML = `<img src="${image}" alt="Fun fact image" width="300px" style="align-items: center" class="mx-auto">`;
       }
     }
     displayNextTrial();
