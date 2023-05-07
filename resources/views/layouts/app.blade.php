@@ -23,6 +23,10 @@
         @if (Request::is('eyetest/colorblindnesstest'))
             <script src="../js/colorblindnesstest.js" defer></script>
         @endif
+        @if (Request::is('eyetest/eyesighttest'))
+            <script src="https://docs.opencv.org/master/opencv.js" defer></script>
+            <script src="../js/eyesighttest.js" defer></script>
+        @endif
     
         
     </head>
