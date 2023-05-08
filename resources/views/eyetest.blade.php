@@ -1,12 +1,12 @@
 <x-app-layout>
     <x-main-card>
-        <div class="row">
-            <x-page-heading>Eye Tests</x-page-heading><br>
-            <div class="col-md-4 scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
+        <div class="row justify-content-around">
+            <x-page-heading class="my-4">Eye Tests</x-page-heading><br>
+            <x-small-card class="col-md-3">
                 <div>
-                    <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Eye-Sight Test</h2>
+                    <h2 class="mt-6 text-xl font-semibold text-gray-900">Eye-Sight Test</h2>
 
-                    <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+                    <p class="mt-4 text-gray-500 text-sm leading-relaxed">
                         Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
                     </p>
 
@@ -14,13 +14,13 @@
                         {{__('Take test')}}
                     </x-primary-button>
                 </div>
-            </div>
+            </x-small-card>
 
-            <div class="col-md-4 scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
+            <x-small-card class="col-md-3">
                 <div>
-                    <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Color Blindness Test</h2>
+                    <h2 class="mt-6 text-xl font-semibold text-gray-900">Color Blindness Test</h2>
 
-                    <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+                    <p class="mt-4 text-gray-500 text-sm leading-relaxed">
                         Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
                     </p>
 
@@ -28,13 +28,13 @@
                         {{__('Take test')}}
                     </x-primary-button>
                 </div>
-            </div>
+            </x-small-card>
 
-            <div class="col-md-4 scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
+            <x-small-card class="col-md-3">
                 <div>
-                    <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Reaction Speed Test</h2>
+                    <h2 class="mt-6 text-xl font-semibold text-gray-600">Reaction Speed Test</h2>
 
-                    <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+                    <p class="mt-4 text-gray-500 text-sm leading-relaxed">
                         Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
                     </p>
 
@@ -42,7 +42,7 @@
                         {{__('Take test')}}
                     </x-primary-button>
                 </div>
-            </div>
+            </x-small-card>
         </div>
     </x-main-card>
 </x-app-layout>
