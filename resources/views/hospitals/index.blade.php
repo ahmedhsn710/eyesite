@@ -1,6 +1,11 @@
 <x-app-layout>
   <x-main-card>
-    <x-page-heading>Eye Hospitals</x-page-heading><br>
+
+    <div class="mx-6">
+      <x-searchbar link="/hospitals" />
+    </div>
+    
+    <x-page-heading>Eye Hospitals</x-page-heading><br />
     @if(count($hospitals) == 0)
       <p>No hospitals found</p>
     @else
