@@ -22,4 +22,8 @@ class Hospital extends Model
             ->orWhere('email', 'like', '%'.$filter['search'].'%');
         }
     }
+
+    public function scopeGetCities($query) {
+        return $query->select('city')->distinct()->orderBy('city');
+    }
 }
