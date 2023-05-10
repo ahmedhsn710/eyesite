@@ -1,8 +1,41 @@
 <x-app-layout>
   <x-main-card>
 
-    <div class="mx-6">
-      <x-searchbar link="/hospitals" />
+    <div class="row align-items-center gx-6 gy-2">
+      <div class="col-md-6">
+        <x-searchbar link="/hospitals" textbox_placeholder="Search hospitals..." />
+      </div>
+      <div class="col-md-6">
+        <div class="dropdown float-end">
+          <button class="btn btn-light border dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Select city
+          </button>
+          <ul class="dropdown-menu">
+            @php
+              $filtered = null;
+              $activecity = "none";
+              if ($_GET['city'] ?? false) {
+                $filtered = true;
+              }
+            @endphp
+            @if($filtered)
+              <li><a class="dropdown-item" href="/hospitals">none</a></li>
+              @foreach($cities as $c)
+                @if($_GET['city'] == $c->city)
+                  <li><a class="dropdown-item active" href="/hospitals?city={{$c->city}}">{{$c->city}}</a></li>
+                @else
+                  <li><a class="dropdown-item" href="/hospitals?city={{$c->city}}">{{$c->city}}</a></li>
+                @endif
+              @endforeach
+            @else
+              <li><a class="dropdown-item active" href="/hospitals">none</a></li>
+              @foreach($cities as $c)
+                <li><a class="dropdown-item" href="/hospitals?city={{$c->city}}">{{$c->city}}</a></li>
+              @endforeach
+            @endif
+          </ul>
+        </div>
+      </div>
     </div>
     
     <x-page-heading>Eye Hospitals</x-page-heading><br />
