@@ -18,7 +18,21 @@
         <style>
             :root {
                 font-family: 'Fredoka', sans-serif;
+                --main-color: purple;
+                --sec-color: rgb(84, 1, 84);
             }
+            .colored-heading {
+                color: var(--main-color);
+            }
+
+            .p-button {
+                font-family:"Fredoka"; 
+                background-color: var(--main-color);
+            }
+            .p-button:hover {
+                background-color: var(--sec-color);
+            }
+            
         </style>
         @if (Request::is('eyetest/colorblindnesstest'))
             <script src="../js/colorblindnesstest.js" defer></script>
