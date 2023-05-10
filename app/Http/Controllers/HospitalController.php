@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Hospital;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HospitalController extends Controller
 {
@@ -12,7 +13,8 @@ class HospitalController extends Controller
             'hospitals' => Hospital::latest()->filter([
                 'city' => $request->city, 
                 'search' => $request->search
-            ])->get()
+            ])->get(),
+            'cities' => DB::table('hospitals')->select('city')->distinct()->get()
         ]);
     }
 }
