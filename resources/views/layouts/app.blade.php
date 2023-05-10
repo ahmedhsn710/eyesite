@@ -32,6 +32,33 @@
             .p-button:hover {
                 background-color: var(--sec-color);
             }
+
+            .home_img {
+                background: url(../images/tempmain.jpg);
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+                box-shadow: inset 0 0 0 9px rgb(128 0 128 / 30%);
+                order: 1;
+                justify-self: center;
+                width: 500px;
+                height: 500px;
+                animation: profile__animate 8s ease-in-out infinite 1s;
+            }
+
+            @keyframes profile__animate {
+                0% {
+                    border-radius: 60% 40% 30% 70%/ 60% 30% 70% 40%;
+                }
+
+                50% {
+                    border-radius: 30% 60% 70% 40%/ 50% 60% 30% 60%;
+                }
+
+                100% {
+                    border-radius: 60% 40% 30% 70%/ 60% 30% 70% 40%;
+                }
+            }
             
         </style>
         @if (Request::is('eyetest/colorblindnesstest'))
