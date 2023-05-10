@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\HospitalController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 
@@ -27,9 +28,7 @@ Route::get('/About Us', function () {
     return view('AboutUs');
 })->name('About Us');
 
-Route::get('/hospitals', function () {
-    return view('hospitals');
-})->name('hospitals');
+Route::get('/hospitals', [HospitalController::class, 'index'])->name('hospitals');
 
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
 

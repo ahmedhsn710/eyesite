@@ -1,10 +1,13 @@
 <x-app-layout>
-    <div class="card" style="width: 18rem;">
-        <video src="video.mp4"></video>
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
+  <x-main-card>
+
+    <canvas id="canvas" class="max-w-7xl mx-auto p-6 lg:p-8"></canvas>
+    <div id="result" class="max-w-7xl mx-auto p-6 lg:p-8"></div>
+      <div class="max-w-7xl mx-auto p-6 lg:p-8">
+        <x-primary-button id="testButton" onclick="start()" >Start test</x-primary-button>
+        <x-primary-button id="stopButton" >Stop Video</x-primary-button>
+      </div>                
+    </div>
+    
+  </x-main-card>
 </x-app-layout>

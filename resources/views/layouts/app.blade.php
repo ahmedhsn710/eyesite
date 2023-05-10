@@ -18,10 +18,28 @@
         <style>
             :root {
                 font-family: 'Fredoka', sans-serif;
+                --main-color: purple;
+                --sec-color: rgb(84, 1, 84);
             }
+            .colored-heading {
+                color: var(--main-color);
+            }
+
+            .p-button {
+                font-family:"Fredoka"; 
+                background-color: var(--main-color);
+            }
+            .p-button:hover {
+                background-color: var(--sec-color);
+            }
+            
         </style>
         @if (Request::is('eyetest/colorblindnesstest'))
-            <script src="../js/colorblindnesstest.js"></script>
+            <script src="../js/colorblindnesstest.js" defer></script>
+        @endif
+        @if (Request::is('eyetest/eyesighttest'))
+            <script src="https://docs.opencv.org/master/opencv.js" defer></script>
+            <script src="../js/eyesighttest.js" defer></script>
         @endif
     
         
