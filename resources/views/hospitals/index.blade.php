@@ -72,7 +72,7 @@
       @endforeach
     </div>
     <div class="container">
-      {{$hospitals->links()}}
+      {{$hospitals->appends($_GET)->links()}}
     </div>
     @endif 
   </x-main-card>
