@@ -13,8 +13,8 @@ class HospitalController extends Controller
             'hospitals' => Hospital::latest()->filter([
                 'city' => $request->city, 
                 'search' => $request->search
-            ])->get(),
-            'cities' => DB::table('hospitals')->select('city')->distinct()->get()
+            ])->paginate(8),
+            'cities' => DB::table('hospitals')->select('city')->distinct()->orderBy('city')->get()
         ]);
     }
 }

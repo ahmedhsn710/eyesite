@@ -1,5 +1,5 @@
 <x-app-layout>
-  <x-main-card>
+  <x-main-card class="overflow-visible">
 
     <div class="row align-items-center gx-6 gy-2">
       <div class="col-md-6">
@@ -70,7 +70,10 @@
 
         </x-small-card>
       @endforeach
-    </div>       
+    </div>
+    <div class="container">
+      {{$hospitals->links()}}
+    </div>
     @endif 
   </x-main-card>
 </x-app-layout>
