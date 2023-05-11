@@ -1,52 +1,68 @@
 <x-app-layout>
-  <x-main-card class="overflow-visible">
+  <x-main-card class="overflow-visible ">
+    <h2 style="padding-top: 30px; padding-bottom:30px; font-family:'Fredoka', Courier, monospace; font-weight:bold; font-size:50px; text-align:center"><span class="colored-heading">E</span>ye <span class="colored-heading">H</span>ospitals</h2>
 
     <div class="row align-items-center gx-6 gy-2">
       <div class="col-md-6">
         <x-searchbar link="/hospitals" textbox_placeholder="Search hospitals..." />
       </div>
-      <div class="col-md-6">
-        <div class="dropdown float-end">
-          <button class="btn btn-light border dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Select city
+      <x-dropdown class="align-left" width="48" align="left">
+        <x-slot name="trigger">
+          <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+              
+              <div>Select City</div>
+              
+
+              <div class="ml-1">
+                  <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+              </div>
           </button>
-          <ul class="dropdown-menu">
-            @php
-              $filtered = null;
-              $activecity = "none";
-              if ($_GET['city'] ?? false) {
-                $filtered = true;
-              }
-            @endphp
-            @if($filtered)
-              <li><a class="dropdown-item" href="/hospitals">none</a></li>
-              @foreach($cities as $c)
-                @if($_GET['city'] == $c->city)
-                  <li><a class="dropdown-item active" href="/hospitals?city={{$c->city}}">{{$c->city}}</a></li>
-                @else
-                  <li><a class="dropdown-item" href="/hospitals?city={{$c->city}}">{{$c->city}}</a></li>
-                @endif
-              @endforeach
-            @else
-              <li><a class="dropdown-item active" href="/hospitals">none</a></li>
-              @foreach($cities as $c)
-                <li><a class="dropdown-item" href="/hospitals?city={{$c->city}}">{{$c->city}}</a></li>
-              @endforeach
-            @endif
-          </ul>
-        </div>
-      </div>
+      </x-slot>
+      <x-slot name="content" >
+          @php
+            $filtered = null;
+            $activecity = "none";
+            if ($_GET['city'] ?? false) {
+              $filtered = true;
+            }
+          @endphp
+          @if($filtered)
+            <x-dropdown-link :href="route('hospitals')">
+              None
+            </x-dropdown-link>
+            
+            @foreach($cities as $c)
+              @if($_GET['city'] == $c->city)
+              <x-dropdown-link :href="route('hospitals', ['city' => $c->city])">
+                {{ $c->city }}
+              </x-dropdown-link>
+            
+              @endif
+            @endforeach
+          @else
+          <x-dropdown-link :href="route('hospitals')">
+            None
+          </x-dropdown-link>
+            @foreach($cities as $c)
+            <x-dropdown-link :href="route('hospitals', ['city' => $c->city])">
+              {{ $c->city }}
+            </x-dropdown-link>
+            @endforeach
+          @endif
+    </x-slot>
+      </x-dropdown>
     </div>
     
-    <x-page-heading>Eye Hospitals</x-page-heading><br />
     @if(count($hospitals) == 0)
       <p>No hospitals found</p>
     @else
     <div style="display: grid; grid-template-columns: 50% 50%;">
       @foreach($hospitals as $hospital)
-        <x-small-card class="mx-6 my-3">
+        <x-main-card class="mx-6 my-3 motion-safe:hover:scale-[1.01] transition-all duration-250">
 
-          <h3 class="text-xl font-semibold">{{$hospital->name}}</h3>
+          <h3 class="text-xl font-semibold" style="color: var(--main-color); font-weight:bold;">{{$hospital->name}}</h3>
 
           <p>City: <u><a href="/hospitals?city={{$hospital->city}}">{{$hospital->city}}</a></u></p>
 
@@ -68,7 +84,7 @@
             </p>
           @endif
 
-        </x-small-card>
+        </x-main-card>
       @endforeach
     </div>
     <div class="container">
