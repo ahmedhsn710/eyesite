@@ -1,5 +1,5 @@
-function speak(text) {
-    console.log(`${text}`)
+function speak(id) {
+    let text = document.getElementById(id).innerHTML
     const synth = window.speechSynthesis;
     const element = document.createElement('div');
     element.innerHTML = text;
