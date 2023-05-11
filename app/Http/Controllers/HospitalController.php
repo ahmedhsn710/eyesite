@@ -14,7 +14,7 @@ class HospitalController extends Controller
                 'city' => $request->city, 
                 'search' => $request->search
             ])->paginate(8),
-            'cities' => DB::table('hospitals')->select('city')->distinct()->orderBy('city')->get()
+            'cities' => Hospital::query()->getCities()->get()
         ]);
     }
 }
