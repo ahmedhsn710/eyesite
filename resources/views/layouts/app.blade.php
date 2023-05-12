@@ -33,6 +33,12 @@
                 background-color: var(--sec-color);
             }
 
+            .links::first-letter {
+                font-family:"Fredoka";
+                color: var(--main-color);
+                font-weight: bold;
+            }
+
             .home_img {
                 background: url(../images/tempmain.jpg);
                 background-repeat: no-repeat;
