@@ -1,11 +1,26 @@
+@php
+$filtered = false;
+if ($_GET['city'] ?? false) {
+  $filtered = true;
+}
+@endphp
+
 <x-app-layout>
   <x-main-card class="overflow-visible ">
     <h2 style="padding-top: 30px; padding-bottom:30px; font-family:'Fredoka', Courier, monospace; font-weight:bold; font-size:50px; text-align:center"><span class="colored-heading">E</span>ye <span class="colored-heading">H</span>ospitals</h2>
 
     <div class="row align-items-center gx-6 gy-2">
       <div class="col-md-6">
-        <x-searchbar link="/hospitals" textbox_placeholder="Search hospitals..." />
+        <x-searchbar :href="route('hospitals')" textbox_placeholder="Search hospitals..." />
       </div>
+      
+      @if($filtered)
+      <div>
+      <button onclick="window.location.href='{{ route('hospitals') }}'" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+        <div>Remove Selection</div>
+      </button>
+      </div>
+      @else
       <x-dropdown class="align-left" width="48" align="left">
         <x-slot name="trigger">
           <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
@@ -19,48 +34,26 @@
                   </svg>
               </div>
           </button>
-      </x-slot>
-      <x-slot name="content" >
-          @php
-            $filtered = null;
-            $activecity = "none";
-            if ($_GET['city'] ?? false) {
-              $filtered = true;
-            }
-          @endphp
-          @if($filtered)
-            <x-dropdown-link :href="route('hospitals')">
-              None
-            </x-dropdown-link>
-            
-            @foreach($cities as $c)
-              @if($_GET['city'] == $c->city)
-              <x-dropdown-link :href="route('hospitals', ['city' => $c->city])">
-                {{ $c->city }}
-              </x-dropdown-link>
-            
-              @endif
-            @endforeach
-          @else
+        </x-slot>
+        <x-slot name="content" >
           <x-dropdown-link :href="route('hospitals')">
             None
           </x-dropdown-link>
-            @foreach($cities as $c)
-            <x-dropdown-link :href="route('hospitals', ['city' => $c->city])">
-              {{ $c->city }}
-            </x-dropdown-link>
-            @endforeach
-          @endif
-    </x-slot>
+
+          @foreach($cities as $c)
+          <x-dropdown-link :href="route('hospitals', ['city' => $c->city])">{{ $c->city }}</x-dropdown-link>
+          @endforeach
+        </x-slot>
       </x-dropdown>
+      @endif
     </div>
     
     @if(count($hospitals) == 0)
-      <p>No hospitals found</p>
+      <p class="mt-4">No hospitals found</p>
     @else
-    <div style="display: grid; grid-template-columns: 50% 50%;">
+    <div class="mt-4" style="display: grid; grid-template-columns: 50% 50%;">
       @foreach($hospitals as $hospital)
-        <x-main-card class="mx-6 my-3 motion-safe:hover:scale-[1.01] transition-all duration-250">
+        <x-main-card class="mx-6 my-3 motion-safe:hover:scale-[1.01] transition-all duration-250" vert_space="1">
 
           <h3 class="text-xl font-semibold" style="color: var(--main-color); font-weight:bold;">{{$hospital->name}}</h3>
 
