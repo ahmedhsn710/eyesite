@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\ArticleController;
-use App\Http\Controllers\HospitalController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProfileController;
-use App\Models\Report;
+use App\Http\Controllers\HospitalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,11 +70,7 @@ Route::get('/dashboard', function () {
 
 
 // Reports page
-Route::get('/reports', function () { 
-    return view('reports', [
-        'reports' => Report::all()
-    ]);
-})->middleware('auth')->name('reports');
+Route::get('/reports', [ReportController::class, 'index'])->middleware('auth')->name('reports');
 
 // Profile editing pages
 Route::middleware('auth')->group(function () {
