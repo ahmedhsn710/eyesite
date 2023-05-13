@@ -4,6 +4,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\HospitalController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Models\Report;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,27 +17,16 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
+// Home page
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+
+// Eyesight pages
 Route::get('/eyetest', function () {
     return view('eyetest');
 })->name('eyetest');
-
-Route::get('/About Us', function () {
-    return view('AboutUs');
-})->name('About Us');
-
-Route::get('/hospitals', [HospitalController::class, 'index'])->name('hospitals');
-
-Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
-
-Route::get('/articles/{article}', [ArticleController::class, 'show'])->name('articles.show');
-
-Route::get('/chat', function () {
-    return view('chat');
-})->name('chat');
 
 Route::get('/eyetest/eyesighttest', function () {
     return view('eyesighttest');
@@ -50,12 +40,44 @@ Route::get('/eyetest/colorblindnesstest', function () {
     return view('colorblindnesstest');
 })->name('colorblindnesstest');
 
+
+// About us page
+Route::get('/About Us', function () {
+    return view('AboutUs');
+})->name('About Us');
+
+
+// Hospitals page
+Route::get('/hospitals', [HospitalController::class, 'index'])->name('hospitals');
+
+
+// Articles pages
+Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
+
+Route::get('/articles/{article}', [ArticleController::class, 'show'])->name('articles.show');
+
+
+// Chat page
+Route::get('/chat', function () {
+    return view('chat');
+})->name('chat');
+
+
+// Dashboard page
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
+// Reports page
+Route::get('/reports', function () { 
+    return view('reports', [
+        'reports' => Report::all()
+    ]);
+})->middleware('auth')->name('reports');
+
+// Profile editing pages
 Route::middleware('auth')->group(function () {
-    Route::get('/reports', function () { return view('reports');})->name('reports');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

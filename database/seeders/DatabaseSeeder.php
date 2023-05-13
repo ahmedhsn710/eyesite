@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Article;
 use App\Models\Hospital;
+use App\Models\Report;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,10 +17,24 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $dummy_user = \App\Models\User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+        ]);
+
+        Report::create([
+            'user_id' => $dummy_user->id,
+            'test_type' => 'eyesight',
+            'left_eye_score' => 10,
+            'right_eye_score' => 8,
+        ]);
+
+        Report::create([
+            'user_id' => $dummy_user->id,
+            'test_type' => 'color blindness',
+            'left_eye_score' => 10,
+            'right_eye_score' => 10,
+        ]);
 
         Article::create([
             'title' => 'Perceptions of eye health in schools in Pakistan',
