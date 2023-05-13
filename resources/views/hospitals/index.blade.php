@@ -51,7 +51,18 @@ if ($_GET['city'] ?? false) {
     @if(count($hospitals) == 0)
       <p class="mt-4">No hospitals found</p>
     @else
-    <div class="mt-4" style="display: grid; grid-template-columns: 50% 50%;">
+    <style>
+      .shannugrid {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+      @media screen and (min-width: 768px) {
+        .shannugrid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+    </style>
+    <div class="mt-6 mb-3 shannugrid">
       @foreach($hospitals as $hospital)
         <x-main-card class="mx-6 my-3 motion-safe:hover:scale-[1.01] transition-all duration-250" vert_space="1">
 
