@@ -49,7 +49,7 @@ if ($_GET['city'] ?? false) {
     </div>
     
     @if(count($hospitals) == 0)
-      <p class="mt-4">No hospitals found</p>
+      <p class="m-4 p-3 border rounded">No hospitals found</p>
     @else
     <style>
       .shannugrid {
@@ -64,7 +64,7 @@ if ($_GET['city'] ?? false) {
     </style>
     <div class="mt-6 mb-3 shannugrid">
       @foreach($hospitals as $hospital)
-        <x-main-card class="mx-6 my-3 motion-safe:hover:scale-[1.01] transition-all duration-250" vert_space="1">
+        <div class="bg-white overflow-hidden shadow sm:rounded-lg my-3 mx-6 motion-safe:hover:scale-[1.01] transition-all duration-250 p-6 lg:p-8 max-w-7xl border">
 
           <h3 class="text-xl font-semibold" style="color: var(--main-color); font-weight:bold;">{{$hospital->name}}</h3>
 
@@ -88,7 +88,7 @@ if ($_GET['city'] ?? false) {
             </p>
           @endif
 
-        </x-main-card>
+        </div>
       @endforeach
     </div>
     <div class="container">
