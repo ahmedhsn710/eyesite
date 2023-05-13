@@ -6,11 +6,10 @@
     @else
       @foreach($articles as $article) 
       <x-main-card class="my-2 motion-safe:hover:scale-[1.01] transition-all duration-250" vert_space="2">
-        <h3 class="text-xl font-semibold py-1" style="color: var(--main-color)"><a href={{"/articles/".$article->id}}>{{$article->title}}</a></h4>
+        <h3 class="text-xl font-semibold py-1" style="color: var(--main-color)"><a href={{"/articles/".$article->id}}>{{$article->title}}</a></h3>
         <p class="text-base transform -translate-x-1/2">
           @php
-          $mystr = substr($article->body, 0, 256).'...';
-          echo nl2br($mystr);
+          echo nl2br(substr($article->body, 0, 256).'...');
           @endphp
         </p>
         <p class="text-xs text-right">By {{$article->author}} &emsp; Date: {{$article->published_on}}</p>
