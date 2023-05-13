@@ -4,6 +4,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\HospitalController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Models\Report;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,7 +71,9 @@ Route::get('/dashboard', function () {
 
 // Reports page
 Route::get('/reports', function () { 
-    return view('reports');
+    return view('reports', [
+        'reports' => Report::all()
+    ]);
 })->middleware('auth')->name('reports');
 
 // Profile editing pages
