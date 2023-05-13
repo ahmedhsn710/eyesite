@@ -1,4 +1,4 @@
-@props(['link', 'textbox_placeholder'])
+@props(['href', 'textbox_placeholder'])
 
 @php
 if (!($textbox_placeholder ?? false)) {
@@ -6,7 +6,7 @@ if (!($textbox_placeholder ?? false)) {
 }   
 @endphp
 
-<form action="{{$link}}">
+<form action="{{$href}}">
   <div class="row align-items-center">
     <div class="col-9 pe-1">
       <input class="form-control rounded py-2" type="text" name="search" placeholder="{{$textbox_placeholder}}" />
