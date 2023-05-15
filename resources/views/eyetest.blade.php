@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-main-card>
+    <x-main-card :border="true">
         <h2 style="padding-top: 30px; padding-bottom:30px; font-family:'Fredoka', Courier, monospace; font-weight:bold; font-size:50px; text-align:center"> <span class="colored-heading">E</span>ye <span class="colored-heading">H</span>ealth <span class="colored-heading">T</span>ests</h2>
         <div class="d-flex flex-column flex-md-row justify-content-center align-items-center scale-100 p-6 bg-white rounded-lg" style="min-height:75vh">
             <div class="order-md-first">

@@ -6,7 +6,7 @@ if ($_GET['city'] ?? false) {
 @endphp
 
 <x-app-layout>
-  <x-main-card class="overflow-visible ">
+  <x-main-card class="overflow-visible " :border="true">
     <h2 style="padding-top: 30px; padding-bottom:30px; font-family:'Fredoka', Courier, monospace; font-weight:bold; font-size:50px; text-align:center"><span class="colored-heading">E</span>ye <span class="colored-heading">H</span>ospitals</h2>
 
     <div class="row align-items-center gx-6 gy-2">
@@ -64,7 +64,7 @@ if ($_GET['city'] ?? false) {
     </style>
     <div class="mt-6 mb-3 shannugrid">
       @foreach($hospitals as $hospital)
-        <div class="bg-white overflow-hidden shadow sm:rounded-lg my-3 mx-6 motion-safe:hover:scale-[1.01] transition-all duration-250 p-6 lg:p-8 max-w-7xl border">
+        <div class="cool-link bg-white overflow-hidden shadow sm:rounded-lg my-3 mx-6 motion-safe:hover:scale-[1.01] transition-all duration-250 p-6 lg:p-8 max-w-7xl border">
 
           <h3 class="text-xl font-semibold" style="color: var(--main-color); font-weight:bold;">{{$hospital->name}}</h3>
 

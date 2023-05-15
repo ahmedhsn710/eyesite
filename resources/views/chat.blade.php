@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-main-card>
+    <x-main-card :border="true">
         <div class="flex justify-center">
             <img src="{{ asset('images/logo.png') }}" alt="logo"  width="150" height="150">
         </div>
