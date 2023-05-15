@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-main-card>
+    <x-main-card :border="true">
         <div class="d-flex flex-column flex-md-row justify-content-center align-items-center scale-100 p-6 bg-white rounded-lg " style="min-height:75vh">
             <div class="order-md-first">
                 <img src="{{ asset('images/eyeforsite.png') }}" alt="Image" class="img-fluid">
