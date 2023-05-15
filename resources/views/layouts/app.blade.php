@@ -39,6 +39,35 @@
                 font-weight: bold;
             }
 
+            @keyframes rotate {
+                to {
+                    --angle: 360deg;
+                }
+            }
+
+            @property --angle {
+                syntax: '<angle>';
+                initial-value: 0deg;
+                inherits: false;
+            }
+
+            .cool-link {
+            }
+
+            .cool-link::after {
+                content: '';
+                display: block;
+                width: 0;
+                height: 3px;
+                background: var(--main-color);
+                transition: width .5s;
+            }
+
+            .cool-link:hover::after {
+                width: 100%;
+                //transition: width .5s;
+            }
+
             .home_img {
                 background: url(../images/tempmain.jpg);
                 background-repeat: no-repeat;
