@@ -182,7 +182,12 @@ function changeImg(image) {
 }
 
 function displayResult() {
-    imageDiv.innerHTML = `<h1> You got ${correctans} out of 20 </h1>`
+    imageDiv.style.display = "none";
+    document.getElementById("results").style.display="block"
+    document.getElementById("resultsText").innerHTML = `You got ${correctans} out of 20`
+    document.getElementById("results_test_type").value = "color blindness"
+    document.getElementById("results_result").value = `${(20 - correctans) * 100 / 20}% chance of color blindness`;
+    document.getElementById("results_score").value = `${Math.floor(correctans / 2) + 1}`
 }
 
 

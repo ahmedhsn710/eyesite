@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->enum('test_type', ['eyesight', 'color blindness']);
-            $table->integer('left_eye_score');
-            $table->integer('right_eye_score');
+            $table->string('result');
+            $table->integer('score');
             $table->timestamps();
         });
     }
