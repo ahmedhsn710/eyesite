@@ -32,6 +32,68 @@
             .p-button:hover {
                 background-color: var(--sec-color);
             }
+
+            .links::first-letter {
+                font-family:"Fredoka";
+                color: var(--main-color);
+                font-weight: bold;
+            }
+
+            @keyframes rotate {
+                to {
+                    --angle: 360deg;
+                }
+            }
+
+            @property --angle {
+                syntax: '<angle>';
+                initial-value: 0deg;
+                inherits: false;
+            }
+
+            .cool-link {
+            }
+
+            .cool-link::after {
+                content: '';
+                display: block;
+                width: 0;
+                height: 3px;
+                background: var(--main-color);
+                transition: width .5s;
+            }
+
+            .cool-link:hover::after {
+                width: 100%;
+                //transition: width .5s;
+            }
+
+            .home_img {
+                background: url(../images/tempmain.jpg);
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+                box-shadow: inset 0 0 0 9px rgb(128 0 128 / 30%);
+                order: 1;
+                justify-self: center;
+                width: 500px;
+                height: 500px;
+                animation: profile__animate 8s ease-in-out infinite 1s;
+            }
+
+            @keyframes profile__animate {
+                0% {
+                    border-radius: 60% 40% 30% 70%/ 60% 30% 70% 40%;
+                }
+
+                50% {
+                    border-radius: 30% 60% 70% 40%/ 50% 60% 30% 60%;
+                }
+
+                100% {
+                    border-radius: 60% 40% 30% 70%/ 60% 30% 70% 40%;
+                }
+            }
             
         </style>
         @if (Request::is('eyetest/colorblindnesstest'))

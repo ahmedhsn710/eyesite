@@ -1,15 +1,18 @@
 <x-app-layout>    
   <x-main-card>
-    <x-page-heading>{{$article->title}}</x-page-heading><br>
+    <x-page-heading style="color: var(--main-color)">{{$article->title}}</x-page-heading><br>
     <p>Author: {{$article->author}}</p>
     <p>Published on: {{$article->published_on}}</p>
+    <x-primary-button onclick="speak('article-body')">
+      Read Article
+    </x-primary-button>
     <br>
-    <p>
+    <p id="article-body">
       @php
-      $mystr = $article->body;
-      echo nl2br($mystr);
+      echo nl2br($article->body);
       @endphp
     </p>
     <a href={{$article->source}}><p class="text-blue-500 text-right">Click here for further reading</p></a>
   </x-main-card>
+  <script src="../js/articles.js"></script>
 </x-app-layout>

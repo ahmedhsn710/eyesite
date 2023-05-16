@@ -1,6 +1,22 @@
-<div class="py-12">
+@props(['vert_space', 'border'])
+
+@php
+if (!($vert_space ?? false)) {
+  $vert_space = "12";
+}   
+if (!($border ?? false)) {
+  $st = "";
+  $st1 = "";
+}
+else {
+  $st = '--angle:0deg;border-width:10px;border-style:solid;border-radius:5px!important;border-image:linear-gradient(var(--angle),var(--main-color),white, white, white, white)1;';
+  $st1 = 'animation:10s rotate linear infinite;';
+}
+@endphp
+
+<div class={{"py-".$vert_space}}>
   <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-    <div {{$attributes->merge(['class' => 'bg-white overflow-hidden shadow sm:rounded-lg'])}}>      
+    <div {{$attributes->merge(['class' => 'bg-white overflow-hidden shadow sm:rounded-lg'])}} style="{{$st.$st1}}">
       <div class="max-w-7xl mx-auto p-6 lg:p-8">
         {{$slot}}
       </div>
