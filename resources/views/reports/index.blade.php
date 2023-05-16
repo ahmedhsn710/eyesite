@@ -11,11 +11,14 @@
       @else
         @foreach($reports as $report) 
         <x-main-card class="motion-safe:hover:scale-[1.01] transition-all duration-250 border shadow-sm" vert_space="1" padding="3">
+          
+          <h3 class="text-xl py-1" style="display: inline-block; font-weight: bold; color: var(--main-color);"><u>{{ucfirst($report->test_type)}} test</u></h3>
           <p class="text-base transform -translate-x-1/2">
             {{$report->result}}<br>
             Score: {{$report->score}}/10
           </p>
           <p class="text-xs text-right">Date: {{$report->updated_at}}</p>
+
         </x-main-card>
         @endforeach
       @endif
