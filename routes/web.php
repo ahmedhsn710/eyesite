@@ -41,6 +41,10 @@ Route::get('/eyetest/colorblindnesstest', function () {
     return view('colorblindnesstest');
 })->name('colorblindnesstest');
 
+Route::get('/eyetest/farnsworthtest', function () {
+    return view('farnsworthtest');
+})->name('farnsworthtest');
+
 
 // About us page
 Route::get('/About Us', function () {
