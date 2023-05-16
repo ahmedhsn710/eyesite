@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-main-card :border="true">
+    <x-main-card :border="true" id="main-card">
         <style>
             .box {
                 width: 50px;
@@ -11,7 +11,6 @@
     
             .sortable-container {
                 padding: 10px;
-                border: 2px solid var(--main-color);
                 display: flex;
                 justify-content: space-around;
             }
@@ -37,19 +36,18 @@
         @endphp
 
         @for ($k = 0; $k < 3; $k++)
-        <div id="sortable-container-{$k}" class="sortable-container">
-            
-            @php
-                $colors = ['purple', 'red', 'blue'];
-                $shadeVariation = 10;
+        @php
+        $colors = ['purple', 'red', 'blue'];
+        $shadeVariation = 10;
 
-                $randomArray = generateRandomArray();
+        $randomArray = generateRandomArray();
+        $contId = 'sortable-container' . $k;
 
-            @endphp
-    
+        @endphp
+        <div id="{{$contId}}" class="sortable-container">
             @foreach ($randomArray as $i)
                 @php
-                    $boxId = "box-{$i}";
+                    $boxId = "box-{$k}-{$i}";
                     $j =  ($i + 5)/4;
                     $shade = $j * $shadeVariation;
                     $hls = 20 + 100*$k;
@@ -60,6 +58,8 @@
             @endforeach
         </div>
         @endfor
+        <x-primary-button onclick="displayResult()">Submit</x-primary-button>
+        <div id="result"></div>
 
         <script defer>
             let draggable;
@@ -112,7 +112,42 @@
             });
             });
 
-            
+             
+            function displayResult() {
+                let red, green, blue;
+                for (let i = 0; i < 3; i++) {
+                    let h = "sortable-container" + i;
+                    let cont = document.getElementById(h);
+                    const divs = Array.from(cont.children);
+                    let count = 0;
+
+                    for (let j =0; j < divs.length; j++) {
+                        const div = divs[j];
+                        const ans = parseInt(div.getAttribute('ans'));
+                        
+                        // Check if the div is in the correct position
+                        if (j+1 === ans) {
+                        count++;
+                        }
+                        
+                        switch(i) {
+                            case 0:
+                                red = count;
+                                break;
+                            case 1:
+                                green = count;
+                                break;
+                            default:
+                                blue = count;
+                                break; 
+                        }
+                    }
+                }
+                console.log(red)
+                    
+                document.getElementById('result').innerHTML = `<p> Red Score : ${red} / 7</p> <p> Green Score : ${green} / 7</p> <p> Blue Score : ${blue} / 7</p>`;
+                
+            }
 
 
         </script>
