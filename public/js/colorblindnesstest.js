@@ -159,14 +159,14 @@ let ans = trial.answer;
 
 imageDiv.innerHTML = `<img src="${image}" alt="Fun fact image" width="300px" style="align-items: center" class="mx-auto">`;
 
+
 function giveAns(value) {
-    if (trialIndex <= numTrials) {
+    if (trialIndex < numTrials) {
         const progressBar = document.getElementById('progress-bar');
         const currentWidth = parseInt(progressBar.style.width);
         const newWidth = currentWidth + 5;
         progressBar.style.width = newWidth + '%';
         progressBar.setAttribute('aria-valuenow', newWidth);
-        progressBar.innerText = newWidth + '%';
         if ( value == ans)  correctans++;
         console.log(correctans)
         trial = trialsArray[++trialIndex][1];
