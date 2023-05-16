@@ -4,7 +4,7 @@
 
         <div class="d-flex flex-column flex-md-row justify-content-center align-items-center scale-100 p-6 bg-white rounded-lg " style="min-height:75vh">
             <div class="order-md-first">
-                <img src="{{ asset('images/aboutus.png') }}" alt="Image" class="img-fluid">
+                <img src="{{ asset('images/aboutus.png') }}" alt="Image" class="img-fluid" id="aboutImg">
             </div>
             <div class="col-6 order-md-last mb-3 mb-md-0 md:py-10" style="margin-left: 20px !important">
                 <div class="row">

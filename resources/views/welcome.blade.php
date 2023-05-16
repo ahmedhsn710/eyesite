@@ -10,7 +10,7 @@
                     <div class="col-md-8">
                         <h2 style="padding-top: 30px; padding-bottom:30px; font-family:'Fredoka', Courier, monospace; font-weight:bold; font-size:50px;"><span class="colored-heading">E</span>ye <span class="colored-heading">S</span>ite</h2>
                         <p style="padding-top: 10px; padding-bottom:20px; font-family:'Fredoka', Courier, monospace;">Welcome to Eye Site, the online platform for testing your eye health! With our simple and easy-to-use system, you can test your eyesight from the comfort of your own home.<br> Can't believe, take the test now!</p>
-                        <x-primary-button onclick="window.location.href='{{ route('eyetest') }}'">
+                        <x-primary-button onclick="window.location.href='{{ route('eyetest') }}'" class="page-link">
                             {{__('Take test')}}
                         </x-primary-button>
                     </div>
