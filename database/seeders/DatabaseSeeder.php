@@ -115,13 +115,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Hospital::create([
-            'name' => 'Shahzad Eye Hospital',
-            'city' => 'Karachi',
-            'address' => 'B-2, Block-16, (Near P.I.A Planetarium), Gulshan-e-Iqbal, Karachi',
-            'contact_no' => '9221-34988034'
-        ]);
-
-        Hospital::create([
             'name' => 'Shahzad Eye Hospital (Pvt) Ltd',
             'city' => 'Karachi',
             'address' => 'B-2, Block-16, (Near P.I.A Planetarium), Gulshan-e-Iqbal, Karachi',
