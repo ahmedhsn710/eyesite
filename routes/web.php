@@ -5,6 +5,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HospitalController;
+use App\Models\Report;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,6 +72,8 @@ Route::get('/dashboard', function () {
 
 // Reports page
 Route::get('/reports', [ReportController::class, 'index'])->middleware('auth')->name('reports');
+
+Route::post('/reports', [ReportController::class, 'store'])->middleware('auth')->name('reports.create');
 
 // Profile editing pages
 Route::middleware('auth')->group(function () {
