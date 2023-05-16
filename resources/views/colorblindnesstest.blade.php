@@ -4,7 +4,7 @@
             <h2 style="padding-top: 30px; padding-bottom:40px; font-family:'Fredoka', Courier, monospace; font-weight:bold; font-size:40px;"> <span class="colored-heading">C</span>olor-<span class="colored-heading">B</span>lindness <span class="colored-heading">T</span>est</h2>
         </div>
         <div class="progress max-w-7xl mx-auto" style="margin-bottom:10px; width:30vw ">
-            <div id="progress-bar" class="progress-bar progress-bar-striped" style="background: var(--main-color); width: 10%" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+            <div id="progress-bar" class="progress-bar progress-bar-striped" style="background: var(--main-color); width: 0%" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
         <div class="row">
             <div id="testimage" class="col-md-6 mx-auto" style="align-items: center;">
