@@ -159,8 +159,14 @@ let ans = trial.answer;
 
 imageDiv.innerHTML = `<img src="${image}" alt="Fun fact image" width="300px" style="align-items: center" class="mx-auto">`;
 
+
 function giveAns(value) {
-    if (trialIndex <= numTrials) {
+    if (trialIndex < numTrials) {
+        const progressBar = document.getElementById('progress-bar');
+        const currentWidth = parseInt(progressBar.style.width);
+        const newWidth = currentWidth + 5;
+        progressBar.style.width = newWidth + '%';
+        progressBar.setAttribute('aria-valuenow', newWidth);
         if ( value == ans)  correctans++;
         console.log(correctans)
         trial = trialsArray[++trialIndex][1];
@@ -176,7 +182,12 @@ function changeImg(image) {
 }
 
 function displayResult() {
-    imageDiv.innerHTML = `<h1> You got ${correctans} out of 20 </h1>`
+    imageDiv.style.display = "none";
+    document.getElementById("results").style.display="block"
+    document.getElementById("resultsText").innerHTML = `You got ${correctans} out of 20`
+    document.getElementById("results_test_type").value = "color blindness"
+    document.getElementById("results_result").value = `${(20 - correctans) * 100 / 20}% chance of color blindness`;
+    document.getElementById("results_score").value = `${Math.floor(correctans / 2) + 1}`
 }
 
 

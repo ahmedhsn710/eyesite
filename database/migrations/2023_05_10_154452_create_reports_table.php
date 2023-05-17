@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->enum('test_type', ['eyesight', 'color blindness']);
-            $table->integer('left_eye_score');
-            $table->integer('right_eye_score');
+            $table->enum('test_type', ['eyesight', 'color blindness', "farnsworth"]);
+            $table->string('result');
+            $table->integer('score');
             $table->timestamps();
         });
     }

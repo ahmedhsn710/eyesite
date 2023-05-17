@@ -10,15 +10,29 @@
         </p>
       @else
         @foreach($reports as $report) 
-        <x-main-card class="cool-link my-2 motion-safe:hover:scale-[1.01] transition-all duration-250" vert_space="2">
-          <h3 class="text-xl font-semibold py-1" style="color: var(--main-color)">{{$report->user->name}}</h3>
+        <x-main-card class="motion-safe:hover:scale-[1.01] transition-all duration-250 border shadow-sm" vert_space="1" padding="3">
+          
+          <h3 class="text-xl py-1" style="display: inline-block; font-weight: bold; color: var(--main-color);"><u>{{ucfirst($report->test_type)}} test</u></h3>
           <p class="text-base transform -translate-x-1/2">
-            {{$report->type}}: {{$report->left_eye_score}}, {{$report->left_eye_score}}
+            @php
+            echo nl2br($report->result)
+            @endphp
+            <br>
+            Score: {{$report->score}}/10
           </p>
           <p class="text-xs text-right">Date: {{$report->updated_at}}</p>
+
         </x-main-card>
         @endforeach
       @endif
+      
+      <form method="post" action="/reports" enctype="multipart/form-data">
+        @csrf
+        <input type="hidden" name="test_type" value="eyesight">
+        <input type="hidden" name="result" value="Left Eye: 0.25, Right Eye: 0.25">
+        <input type="hidden" name="score" value="9">
+        <button class="mt-4 inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">lol</button>
+      </form>
     </x-main-card>
   </x-app-layout>
   

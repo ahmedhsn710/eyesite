@@ -5,6 +5,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HospitalController;
+use App\Models\Report;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,21 +25,25 @@ Route::get('/', function () {
 
 
 // Eyesight pages
-Route::get('/eyetest', function () {
-    return view('eyetest');
+Route::get('/eyetests', function () {
+    return view('eyetests/index');
 })->name('eyetest');
 
-Route::get('/eyetest/eyesighttest', function () {
-    return view('eyesighttest');
+Route::get('/eyetests/eyesighttest', function () {
+    return view('eyetests/eyesighttest');
 })->name('eyesighttest');
 
-Route::get('/eyetest/reactionspeedtest', function () {
-    return view('reactionspeedtest');
+Route::get('/eyetests/reactionspeedtest', function () {
+    return view('eyetests/reactionspeedtest');
 })->name('reactionspeedtest');
 
-Route::get('/eyetest/colorblindnesstest', function () {
-    return view('colorblindnesstest');
+Route::get('/eyetests/colorblindnesstest', function () {
+    return view('eyetests/colorblindnesstest');
 })->name('colorblindnesstest');
+
+Route::get('/eyetests/farnsworthtest', function () {
+    return view('eyetests/farnsworthtest');
+})->name('farnsworthtest');
 
 
 // About us page
@@ -71,6 +76,8 @@ Route::get('/dashboard', function () {
 
 // Reports page
 Route::get('/reports', [ReportController::class, 'index'])->middleware('auth')->name('reports');
+
+Route::post('/reports', [ReportController::class, 'store'])->middleware('auth')->name('reports.create');
 
 // Profile editing pages
 Route::middleware('auth')->group(function () {

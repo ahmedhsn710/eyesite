@@ -17,24 +17,10 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        $dummy_user = \App\Models\User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
-
-        Report::create([
-            'user_id' => $dummy_user->id,
-            'test_type' => 'eyesight',
-            'left_eye_score' => 10,
-            'right_eye_score' => 8,
-        ]);
-
-        Report::create([
-            'user_id' => $dummy_user->id,
-            'test_type' => 'color blindness',
-            'left_eye_score' => 10,
-            'right_eye_score' => 10,
-        ]);
+        // $dummy_user = \App\Models\User::factory()->create([
+        //     'name' => 'Test User',
+        //     'email' => 'test@example.com',
+        // ]);
 
         Article::create([
             'title' => 'Perceptions of eye health in schools in Pakistan',
@@ -112,13 +98,6 @@ class DatabaseSeeder extends Seeder
             'city' => 'Okara',
             'address' => 'Plot No.1151, Khan Colony, Okara, Pakistan Landmarks',
             'contact_no' => '+92-44-2523560'
-        ]);
-
-        Hospital::create([
-            'name' => 'Shahzad Eye Hospital',
-            'city' => 'Karachi',
-            'address' => 'B-2, Block-16, (Near P.I.A Planetarium), Gulshan-e-Iqbal, Karachi',
-            'contact_no' => '9221-34988034'
         ]);
 
         Hospital::create([

@@ -1,9 +1,12 @@
-@props(['vert_space', 'border'])
+@props(['vert_space', 'padding', 'border'])
 
 @php
 if (!($vert_space ?? false)) {
   $vert_space = "12";
-}   
+}
+if(!($padding ?? false)) {
+  $padding = "6";
+}
 if (!($border ?? false)) {
   $st = "";
   $st1 = "";
@@ -15,9 +18,9 @@ else {
 @endphp
 
 <div class={{"py-".$vert_space}}>
-  <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto sm:px-{{$padding}} lg:px-{{$padding + 2}}">
     <div {{$attributes->merge(['class' => 'bg-white overflow-hidden shadow sm:rounded-lg'])}} style="{{$st.$st1}}">
-      <div class="max-w-7xl mx-auto p-6 lg:p-8">
+      <div class="max-w-7xl mx-auto p-{{$padding}} lg:p-{{$padding + 2}}">
         {{$slot}}
       </div>
     </div>

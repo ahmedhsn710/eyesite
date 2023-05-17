@@ -12,4 +12,16 @@ class ReportController extends Controller
             'reports' => auth()->user()->reports()->get()
         ]);
     }
+
+    public function store(Request $request) {
+        $reportData = $request->validate([
+            'test_type' => 'required',
+            'result' => 'required',
+            'score' => 'required|min:0|max:10'
+        ]);
+        $reportData['user_id'] = auth()->id();
+        Report::create($reportData);
+
+        return redirect('/reports');
+    }
 }
