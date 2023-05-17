@@ -187,7 +187,7 @@ function displayResult() {
     document.getElementById("resultsText").innerHTML = `You got ${correctans} out of 20`
     document.getElementById("results_test_type").value = "color blindness"
     document.getElementById("results_result").value = `${(20 - correctans) * 100 / 20}% chance of color blindness`;
-    document.getElementById("results_score").value = `${Math.floor(correctans / 2) + 1}`
+    document.getElementById("results_score").value = `${Math.ceil(correctans / 2)}`
 }
 
 
