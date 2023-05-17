@@ -29,9 +29,13 @@ Route::get('/eyetest', function () {
     return view('eyetest');
 })->name('eyetest');
 
-Route::get('/eyetest/eyesighttest', function () {
-    return view('eyesighttest');
-})->name('eyesighttest');
+Route::get('/eyetest/eyesighttest0', function () {
+    return view('eyesighttest0');
+})->name('eyesighttest0');
+
+Route::get('/eyetest/eyesighttest1', function () {
+    return view('eyesighttest1');
+})->name('eyesighttest1');
 
 Route::get('/eyetest/reactionspeedtest', function () {
     return view('reactionspeedtest');
