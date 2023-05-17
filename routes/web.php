@@ -5,7 +5,6 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HospitalController;
-use App\Models\Report;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,9 +28,13 @@ Route::get('/eyetests', function () {
     return view('eyetests/index');
 })->name('eyetest');
 
-Route::get('/eyetests/eyesighttest', function () {
-    return view('eyetests/eyesighttest');
-})->name('eyesighttest');
+Route::get('/eyetests/eyesighttest0', function () {
+    return view('eyetests/eyesighttest0');
+})->name('eyesighttest0');
+
+Route::get('/eyetests/eyesighttest1', function () {
+    return view('eyetests/eyesighttest1');
+})->name('eyesighttest1');
 
 Route::get('/eyetests/reactionspeedtest', function () {
     return view('eyetests/reactionspeedtest');
