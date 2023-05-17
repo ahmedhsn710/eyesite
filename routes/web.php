@@ -82,6 +82,8 @@ Route::get('/reports', [ReportController::class, 'index'])->middleware('auth')->
 
 Route::post('/reports', [ReportController::class, 'store'])->middleware('auth')->name('reports.create');
 
+Route::delete('/reports/{report}', [ReportController::class, 'destroy'])->middleware('auth')->name('reports.destory');
+
 // Profile editing pages
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
