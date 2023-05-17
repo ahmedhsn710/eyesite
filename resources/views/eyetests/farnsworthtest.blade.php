@@ -166,7 +166,7 @@
                     `${(10 - red) * 10}% deficiency in differentiating shades of red
                     ${(10 - green) * 10}% deficiency in differentiating shades of green
                     ${(10 - blue) * 10}% deficiency in differentiating shades of blue`
-                document.getElementById("results_score").value = `${Math.floor((red + green + blue) * 10 / 30) + 1}`
+                document.getElementById("results_score").value = `${Math.ceil((red + green + blue) * 10 / 30)}`
             }
 
 

@@ -9,7 +9,7 @@ class ReportController extends Controller
 {
     public function index() {
         return view('reports/index', [
-            'reports' => auth()->user()->reports()->get()
+            'reports' => auth()->user()->reports()->latest()->get()
         ]);
     }
 
