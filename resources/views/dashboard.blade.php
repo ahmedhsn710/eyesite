@@ -48,8 +48,8 @@
 
                     <x-main-card class="cool-link motion-safe:hover:scale-[1.01] transition-all duration-250">
                         <div>
-                            <h2 class="mt-6 text-xl font-semibold text-gray-900 text-center">Reaction Speed Test</h2>
-                            <img src="{{ asset('images/colorblindnesstest.png') }}" alt="Image" class="img-fluid" style="min-width: 250px">
+                            <h2 class="mt-6 text-xl font-semibold text-gray-900 text-center">Farnsworth Test</h2>
+                            <img src="{{ asset('images/farnsworthtest.jpg') }}" alt="Image" class="img-fluid" style="min-width: 250px">
                         </div>
                     </x-main-card>
                 </div>

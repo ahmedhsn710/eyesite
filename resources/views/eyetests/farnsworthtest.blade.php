@@ -58,9 +58,23 @@
             @endforeach
         </div>
         @endfor
-        <x-primary-button onclick="displayResult()">Submit</x-primary-button>
-        <div id="result"></div>
-
+        <div class="row py-4">
+            <div class="col">
+                <div id="results" class="mx-5" style="display: none;">
+                    <p id="resultsText" class="text-lg lh-sm"></p>
+                    <form method="post" action="/reports" enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" name="test_type" id="results_test_type" value="">
+                        <input type="hidden" name="result" id="results_result" value="">
+                        <input type="hidden" name="score" id="results_score" value="">
+                        <x-primary-button class="my-2">Save</x-primary-button>
+                    </form>
+                </div>
+            </div>
+            <div class="col">
+                <x-primary-button class="float-end mx-5" onclick="displayResult()">Finish</x-primary-button>
+            </div>
+        </div>
         <script defer>
             let draggable;
             let dropareas = document.querySelectorAll('.sortable-container');
@@ -143,10 +157,16 @@
                         }
                     }
                 }
-                console.log(red)
-                    
-                document.getElementById('result').innerHTML = `<p> Red Score : ${red} / 7</p> <p> Green Score : ${green} / 7</p> <p> Blue Score : ${blue} / 7</p>`;
-                
+
+                document.getElementById("results").style.display="block"
+                document.getElementById("resultsText").innerHTML = `Red Score : ${red} / 10<br>Green Score : ${green} / 10</br>Blue Score : ${blue} / 10`;
+                document.getElementById("results_test_type").value = "farnsworth"
+                let testResult = (red + green + blue) / 30
+                document.getElementById("results_result").value = 
+                    `${(10 - red) * 10}% deficiency in diferentiating shades of red
+                    ${(10 - green) * 10}% deficiency in diferentiating shades of green
+                    ${(10 - blue) * 10}% deficiency in diferentiating shades of blue`
+                document.getElementById("results_score").value = `${Math.floor((red + green + blue) * 10 / 30) + 1}`
             }
 
 

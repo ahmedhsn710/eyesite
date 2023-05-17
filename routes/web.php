@@ -25,24 +25,24 @@ Route::get('/', function () {
 
 
 // Eyesight pages
-Route::get('/eyetest', function () {
-    return view('eyetest');
+Route::get('/eyetests', function () {
+    return view('eyetests/index');
 })->name('eyetest');
 
-Route::get('/eyetest/eyesighttest', function () {
-    return view('eyesighttest');
+Route::get('/eyetests/eyesighttest', function () {
+    return view('eyetests/eyesighttest');
 })->name('eyesighttest');
 
-Route::get('/eyetest/reactionspeedtest', function () {
-    return view('reactionspeedtest');
+Route::get('/eyetests/reactionspeedtest', function () {
+    return view('eyetests/reactionspeedtest');
 })->name('reactionspeedtest');
 
-Route::get('/eyetest/colorblindnesstest', function () {
-    return view('colorblindnesstest');
+Route::get('/eyetests/colorblindnesstest', function () {
+    return view('eyetests/colorblindnesstest');
 })->name('colorblindnesstest');
 
-Route::get('/eyetest/farnsworthtest', function () {
-    return view('farnsworthtest');
+Route::get('/eyetests/farnsworthtest', function () {
+    return view('eyetests/farnsworthtest');
 })->name('farnsworthtest');
 
 
