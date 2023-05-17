@@ -25,14 +25,6 @@
         </x-main-card>
         @endforeach
       @endif
-      
-      <form method="post" action="/reports" enctype="multipart/form-data">
-        @csrf
-        <input type="hidden" name="test_type" value="eyesight">
-        <input type="hidden" name="result" value="Left Eye: 0.25, Right Eye: 0.25">
-        <input type="hidden" name="score" value="9">
-        <button class="mt-4 inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">lol</button>
-      </form>
     </x-main-card>
   </x-app-layout>
   
