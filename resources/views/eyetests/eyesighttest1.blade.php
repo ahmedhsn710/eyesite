@@ -12,7 +12,7 @@
   <x-main-card>
       <div class="container">
           <h2 style="padding-top: 30px; padding-bottom:40px; font-family:'Fredoka', Courier, monospace; font-weight:bold; font-size:40px;"> <span class="colored-heading">E</span>ye-<span class="colored-heading">S</span>ight <span class="colored-heading">T</span>est</h2>
-          <div id="letterContainer" style="height: 200px; align-item:center"></div>
+          <div id="letterContainer" style="display:flex; justify-content:center; height: 200px; align-item:center"></div>
           <input style="margin-top: 50px; margin-bottom:50px; border-radius: 5px;" type="text" id="inputField" onkeyup="checkInput()" autofocus>
           <div id="result"></div>
       </div>
@@ -32,7 +32,7 @@
       
       function displayNextLetter() {
           var letterContainer = document.getElementById('letterContainer');
-          letterContainer.innerHTML = `<p class="letter" style="font-size: ${10 - 5/10 * currentLetterIndex}px; padding-top:30px">${pickRandomLetter()}</p>`;
+          letterContainer.innerHTML = `<p class="letter my-auto" style="font-size: ${30 - 19/10 * currentLetterIndex}px; padding-top:30px">${pickRandomLetter()}</p>`;
       }
       
       function checkInput() {
@@ -44,7 +44,7 @@
           attempts++;
           currentLetterIndex++;
           inputField.value = '';
-          if(currentLetterIndex < 10){
+          if(currentLetterIndex < 15){
               displayNextLetter();
           }
           }
@@ -55,8 +55,8 @@
               displayNextLetter();
           }
           }
-          if (currentLetterIndex === 10) {
-          result.innerHTML = 'Result: ' + attempts + ' out of 10';
+          if (currentLetterIndex === 15) {
+              result.innerHTML = 'Result: ' + attempts + ' out of 15';
           inputField.disabled = true;
           }
           
