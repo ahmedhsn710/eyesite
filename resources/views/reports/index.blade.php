@@ -1,6 +1,11 @@
 <x-app-layout>
   <x-main-card :border="true">
     <h2 style="padding-top: 30px; padding-bottom:30px; font-family:'Fredoka', Courier, monospace; font-weight:bold; font-size:50px; text-align:center"><span class="colored-heading">R</span>eports</h2>
+    <p class="text-center" style=" padding-top: 6px; padding-bottom:20px; font-family:'Fredoka', Courier, monospace; font-size:20px;" id="instruction">
+      Use the score for each report as rough guide for whether a visit to a eye clinic is nessessary.<br>
+      Eyesight results hold more significance for day to day life as compared to the other test.<br>
+      If taking the test multiple times results in a test score of below 5 than you might want to get a check up.
+    </p>
     @if(count($reports) == 0)
       <div class="m-4 p-3 border rounded">
         <p>No reports to show<br><br></p>
