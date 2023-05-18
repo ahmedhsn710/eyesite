@@ -85,7 +85,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <p style="padding-top: 5px; padding-bottom:5px; font-size:18px;"><span class="colored-heading">Y</span>ou will be letters from the english alphabet one by one getting progressively smaller. Your goal is to guess which one is currently being displayed. Please keep the distance from your screen 50cm and dont lean in to see the smaller letters</p>
+          <p style="padding-top: 5px; padding-bottom:5px; font-size:18px;"><span class="colored-heading">Y</span>ou will be shown letters from the english alphabet one by one getting progressively smaller. Your goal is to guess which one is currently being displayed. Please keep the distance from your screen 50cm and dont lean in to see the smaller letters</p>
           <div class="row mt-4 justify-content-center">
             <div>
             <x-primary-button class="float-end" data-bs-dismiss="modal">
