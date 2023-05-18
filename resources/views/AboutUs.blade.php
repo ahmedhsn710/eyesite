@@ -21,7 +21,7 @@
 
         <div class="row justify-content-around">
             <p class="mt-4 align-center col-md-3" style="text-align: center">
-                        <span style="color:purple; font-weight:500">Email:</span>  shayan.kham.xyz@gmail.com
+                <span style="color:purple; font-weight:500">Email:</span>  shayan.khan.xyz@gmail.com
             </p>
             <p class="mt-4 align-center col-md-3" style="text-align: center">
                 <span style="color:purple; font-weight:500">Contact Number:</span>   +92 333 3333333

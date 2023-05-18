@@ -61,18 +61,17 @@
         <div class="row py-4">
             <div class="col">
                 <div id="results" class="mx-5" style="display: none;">
-                    <p id="resultsText" class="text-lg lh-sm"></p>
                     <form method="post" action="/reports" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="test_type" id="results_test_type" value="">
                         <input type="hidden" name="result" id="results_result" value="">
                         <input type="hidden" name="score" id="results_score" value="">
-                        <x-primary-button class="my-2">Save</x-primary-button>
+                        <button id="results_save">Save</button>
                     </form>
                 </div>
             </div>
             <div class="col">
-                <x-primary-button class="float-end mx-5" onclick="displayResult()">Finish</x-primary-button>
+                <x-primary-button class="float-end mx-5" onclick="saveResult()">Finish</x-primary-button>
             </div>
         </div>
         <script defer>
@@ -127,7 +126,7 @@
             });
 
              
-            function displayResult() {
+            function saveResult() {
                 let red, green, blue;
                 for (let i = 0; i < 3; i++) {
                     let h = "sortable-container" + i;
@@ -158,15 +157,14 @@
                     }
                 }
 
-                document.getElementById("results").style.display="block"
-                document.getElementById("resultsText").innerHTML = `Red Score : ${red} / 10<br>Green Score : ${green} / 10</br>Blue Score : ${blue} / 10`;
                 document.getElementById("results_test_type").value = "farnsworth"
-                let testResult = (red + green + blue) / 30
                 document.getElementById("results_result").value = 
-                    `${(10 - red) * 10}% deficiency in differentiating shades of red
-                    ${(10 - green) * 10}% deficiency in differentiating shades of green
-                    ${(10 - blue) * 10}% deficiency in differentiating shades of blue`
+                    `You have a dificiency of:
+                    ${(10 - red) * 100 / 10}% in differentiating shades of red
+                    ${(10 - green) * 100 / 10}% in differentiating shades of green
+                    ${(10 - blue) * 100 / 10}% in differentiating shades of blue`
                 document.getElementById("results_score").value = `${Math.ceil((red + green + blue) * 10 / 30)}`
+                document.getElementById("results_save").click();
             }
 
 

@@ -10,13 +10,12 @@
             <div id="testimage" class="col-md-6 mx-auto" style="align-items: center;">
             </div>
             <div id="results" class="col-md-6 mx-auto" style="align-items: center; display: none;">
-                <p id="resultsText" class="text-lg"></p>
                 <form method="post" action="/reports" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="test_type" id="results_test_type" value="">
                     <input type="hidden" name="result" id="results_result" value="">
                     <input type="hidden" name="score" id="results_score" value="">
-                    <button class="mt-4 inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">Save</button>
+                    <button id="results_save">Save</button>
                 </form>
             </div>
             <div class="col-md-6 d-flex align-items-center justify-content-center" > 
