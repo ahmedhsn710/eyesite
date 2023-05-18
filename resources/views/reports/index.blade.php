@@ -2,10 +2,10 @@
   <x-main-card :border="true">
     <h2 style="padding-top: 30px; padding-bottom:30px; font-family:'Fredoka', Courier, monospace; font-weight:bold; font-size:50px; text-align:center"><span class="colored-heading">R</span>eports</h2>
     @if(count($reports) == 0)
-      <p class="m-4 p-3 border rounded">
-        No reports to show<br>
+      <div class="m-4 p-3 border rounded">
+        <p>No reports to show<br><br></p>
         <x-primary-button onclick="window.location.href='{{ route('eyetest') }}'">Take tests</x-primary-button>
-      </p>
+      </div>
     @else
       @foreach($reports as $report) 
       <x-main-card class="motion-safe:hover:scale-[1.01] transition-all duration-250 border shadow-sm" vert_space="1" padding="3">
@@ -23,7 +23,7 @@
           @php
           echo nl2br($report->result)
           @endphp
-          <br>
+          <br><br>
           Score: {{$report->score}}/10
         </p>
         </div>
