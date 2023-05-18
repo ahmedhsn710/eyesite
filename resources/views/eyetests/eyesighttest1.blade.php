@@ -15,7 +15,6 @@
       <div id="letterContainer" style="display:flex; justify-content:center; height: 200px; align-item:center"></div>
       <input style="margin-top: 50px; margin-bottom:50px; border-radius: 5px;" type="text" id="inputField" onkeyup="checkInput()" autofocus>
       <div id="results" class="mx-5" style="display: none;">
-        <p id="resultsText" class="text-lg lh-sm"></p>
         <form method="post" action="/reports" enctype="multipart/form-data">
           @csrf
           <input type="hidden" name="test_type" id="results_test_type" value="">
@@ -53,7 +52,7 @@
       attempts++;
       currentLetterIndex++;
       inputField.value = '';
-        if(currentLetterIndex < 15){
+        if(currentLetterIndex < 10){
           displayNextLetter();
         }
       }
@@ -64,13 +63,12 @@
           displayNextLetter();
         }
       }
-      if (currentLetterIndex === 15) {
+      if (currentLetterIndex === 10) {
         inputField.disabled = true;
         document.getElementById("results_test_type").value = "eyesight"
-        let testResult = attempts / 15
         document.getElementById("results_result").value = 
-            `The chance your eyesight is weak is ${Math.round(((15- attempts) * 100 / 15) * 100) / 100}%`
-        document.getElementById("results_score").value = `${Math.ceil(attempts * 10 / 15)}`
+            `The chance your eyesight is weak is ${Math.round(((10 - attempts) * 100 / 10) * 100) / 100}%`
+        document.getElementById("results_score").value = `${Math.ceil(attempts * 10 / 10)}`
         document.getElementById("results_save").click();
       }
     }
