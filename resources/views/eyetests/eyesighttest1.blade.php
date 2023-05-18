@@ -21,7 +21,7 @@
           <input type="hidden" name="test_type" id="results_test_type" value="">
           <input type="hidden" name="result" id="results_result" value="">
           <input type="hidden" name="score" id="results_score" value="">
-          <x-primary-button class="my-2">Save</x-primary-button>
+          <button id="results_save">Save</button>
         </form>
       </div>
     </div>
@@ -53,27 +53,25 @@
       attempts++;
       currentLetterIndex++;
       inputField.value = '';
-      if(currentLetterIndex < 15){
-        displayNextLetter();
-      }
+        if(currentLetterIndex < 15){
+          displayNextLetter();
+        }
       }
       else {
         currentLetterIndex++;
         inputField.value = '';
         if(currentLetterIndex < 10){
-        displayNextLetter();
-      }
+          displayNextLetter();
+        }
       }
       if (currentLetterIndex === 15) {
         inputField.disabled = true;
-        document.getElementById("results").style.display="block"
-        document.getElementById("resultsText").innerHTML = 'Result: ' + attempts + ' out of 15';
         document.getElementById("results_test_type").value = "eyesight"
         let testResult = attempts / 15
         document.getElementById("results_result").value = 
-            `The chance your eyesight is weak is ${(15- attempts) * 100 / 15}%`
+            `The chance your eyesight is weak is ${Math.round(((15- attempts) * 100 / 15) * 100) / 100}%`
         document.getElementById("results_score").value = `${Math.ceil(attempts * 10 / 15)}`
-            
+        document.getElementById("results_save").click();
       }
     }
     
