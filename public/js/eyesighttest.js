@@ -1,6 +1,9 @@
 // Get the canvas element and its context
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
+const inst = document.getElementById('instruction');
+const listenedletter = document.getElementById('letter-listened');
+const testbtn = document.getElementById('testButton');
 const FPS =24;
 let buffer = [];
 let cameradone = false;
@@ -39,18 +42,15 @@ createFileFromUrl = function (path, url, callback) {
     request.send();
 };
 
-function loadClassifier() {
-    
-     // in the callback, load the cascade from file 
-}
-
 // Create a function to measure the distance of a face from the camera
 function measureDistance() {
+    video.style.display = "block";
     // Get the user's camera stream
     navigator.mediaDevices.getUserMedia({ video: true })
         .then(function (stream) {
             
             speak('make the distance from the camera 50');
+            inst.innerHTML = "Make the distance from the camera 50."
 
             // Attach the stream to the video element
             video.srcObject = stream;
@@ -66,7 +66,6 @@ function measureDistance() {
                 let faceCascadeFile = '../haarcascade_frontalface_default.xml'; // path to xml
                 createFileFromUrl(faceCascadeFile, faceCascadeFile, () =>  {
                     classifier.load(faceCascadeFile);
-                    console.log('hi');
                 });
 
                 // Loop through the video frames and detect the face
@@ -107,8 +106,8 @@ function measureDistance() {
                         
                         buffer.push(distance);
                         ctx.font = 'bold 24px Arial';
-                        ctx.fillStyle = 'red';
-                        ctx.fillText(distance, face.x, face.y )
+                        ctx.fillStyle = 'purple';
+                        ctx.fillText(distance, face.x + face.width, face.y - 5)
 
                         
                         
@@ -136,7 +135,7 @@ function measureDistance() {
                     async function clearint() {
                         clearInterval(intervalId);
                         cameradone = true;
-                        canvas.remove();
+                        canvas.style.display = "none";
                         video.remove();
                         stream.getTracks().forEach(track => track.stop());
                         await displayLetter();
@@ -145,7 +144,6 @@ function measureDistance() {
                     // Exit the loop if the user stops the measurement
                     if (!video.srcObject) clearInterval(intervalId);
                     if (cameradone) clearint();
-                    document.getElementById('stopButton').addEventListener('click', clearint)
                 }, 1000 / FPS);
             });
         })
@@ -156,19 +154,29 @@ function measureDistance() {
 
 
 async function displayLetter() {
-    const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+    var letters = ['A', 'B', 'C', 'D', 'E', 'F', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+    var answers = [];
     let numCorrect = 0;
+    var currentLetterIndex = 0;
+
+    function pickRandomLetter() {
+        const randomIndex = Math.floor(Math.random() * letters.length);
+        answers.push(letters[randomIndex])
+        return letters[randomIndex];
+    }
 
     for (let i = 0; i < 10; i++) {
-        const letter = letters[i];
-        result.innerHTML = `<p style="font-size:${(10-i)*24}px">${letter}</p>`;
+        inst.innerHTML = "Read the letter aloud";
+
+        result.innerHTML = `<p class="text-center" style="height: 200px; padding-top:30px; font-size:${30 - 19/10 * currentLetterIndex}px">${pickRandomLetter()}</p>`;
         
         const spokenLetterPromise = recognizeAlphabet();
         const spokenLetter = await Promise.race([
             spokenLetterPromise,
             new Promise(resolve => setTimeout(resolve, 7000)) // Wait for 7 seconds
         ]);
-        if (spokenLetter && spokenLetter.toUpperCase() === letter) {
+
+        if (spokenLetter && spokenLetter.toUpperCase() === answers[currentLetterIndex]) {
             numCorrect++;
 
             //speak(`Correct! You said the letter ${letter}`);
@@ -177,13 +185,18 @@ async function displayLetter() {
             //speak(`Incorrect! The correct letter was ${letter}`);
 
         }
+        currentLetterIndex++;
     }
     console.log(`You got ${numCorrect} out of 10 letters correct.`);
+    result.innerHTML = `<p class="text-center" style="height: 200px; padding-top:30px; font-size:30px">You got ${numCorrect} out of 10 letters correct.</p>`;
+    inst.innerHTML = "Take the test multiple times to get accurate results.";
+    
+
 }
 
 async function recognizeAlphabet() {
     let recognition = new window.webkitSpeechRecognition();
-    console.log("listening")
+    console.log("listening");
     
     recognition.lang = 'en-US';
     recognition.interimResults = false;
@@ -194,28 +207,33 @@ async function recognizeAlphabet() {
     let alphabet = await new Promise((resolve, reject) => {
       setTimeout(() => {
         recognition.stop();
-      }, 7000);
+    }, 7000);
   
       recognition.onresult = (event) => {
         let speechResult = event.results[0][0].transcript;
         let match = speechResult.match(/[a-zA-Z]/i);
+
         
         if (match) {
           resolve(match[0].toUpperCase());
         }
+        listenedletter.innerHTML = `You spoke ${match[0].toUpperCase()}`;
       }
   
       recognition.onerror = (event) => {
         reject(new Error(`Recognition error: ${event.error}`));
       }
-    });
+    });   
     recognition.stop();
     console.log('you spoke' + alphabet)
     return alphabet;
-  }
+
+}
   
   
 
 async function start() {
     measureDistance();
+    testbtn.innerHTML = "Test Again";
+    testbtn.onclick = "windows.location.reload()";
 }
