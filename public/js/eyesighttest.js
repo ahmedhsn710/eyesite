@@ -168,7 +168,7 @@ async function displayLetter() {
     for (let i = 0; i < 10; i++) {
         inst.innerHTML = "Read the letter aloud";
 
-        result.innerHTML = `<p class="text-center" style="height: 200px; padding-top:30px; font-size:${30 - 19/10 * currentLetterIndex}px">${pickRandomLetter()}</p>`;
+        result.innerHTML = `<p class="text-center" style="height: 200px; padding-top:30px; font-size:${30 - 3.2 * currentLetterIndex + 0.1 * currentLetterIndex * currentLetterIndex}px">${pickRandomLetter()}</p>`;
         
         const spokenLetterPromise = recognizeAlphabet();
         const spokenLetter = await Promise.race([
@@ -190,7 +190,12 @@ async function displayLetter() {
     console.log(`You got ${numCorrect} out of 10 letters correct.`);
     result.innerHTML = `<p class="text-center" style="height: 200px; padding-top:30px; font-size:30px">You got ${numCorrect} out of 10 letters correct.</p>`;
     inst.innerHTML = "Take the test multiple times to get accurate results.";
-    
+    testbtn.disabled = true;
+    document.getElementById("results_test_type").value = "eyesight"
+    document.getElementById("results_result").value = 
+        `The chance your eyesight is weak is ${Math.round(((10 - numCorrect) * 100 / 10) * 100) / 100}%`
+    document.getElementById("results_score").value = `${Math.ceil(numCorrect * 10 / 10)}`
+    document.getElementById("results_save").click();
 
 }
 
