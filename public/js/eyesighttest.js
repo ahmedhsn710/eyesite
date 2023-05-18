@@ -168,7 +168,7 @@ async function displayLetter() {
     for (let i = 0; i < 10; i++) {
         inst.innerHTML = "Read the letter aloud";
 
-        result.innerHTML = `<p class="text-center" style="height: 200px; padding-top:30px; font-size:${30 - 19/10 * currentLetterIndex}px">${pickRandomLetter()}</p>`;
+        result.innerHTML = `<p class="text-center" style="height: 200px; padding-top:30px; font-size:${30 - 3.2 * currentLetterIndex + 0.1 * currentLetterIndex * currentLetterIndex}px">${pickRandomLetter()}</p>`;
         
         const spokenLetterPromise = recognizeAlphabet();
         const spokenLetter = await Promise.race([
