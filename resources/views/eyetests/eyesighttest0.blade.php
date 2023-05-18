@@ -15,6 +15,16 @@
         <x-primary-button id="testButton" onclick="start()" >Start test</x-primary-button>
       </div>                
     </div>
+
+    <div id="results" class="mx-5" style="display: none;">
+      <form method="post" action="/reports" enctype="multipart/form-data">
+        @csrf
+        <input type="hidden" name="test_type" id="results_test_type" value="">
+        <input type="hidden" name="result" id="results_result" value="">
+        <input type="hidden" name="score" id="results_score" value="">
+        <button id="results_save">Save</button>
+      </form>
+    </div>
     
   </x-main-card>
   <div class="modal fade" id="tutorialModal" tabindex="-1" role="dialog" aria-labelledby="tutorialModalLabel" aria-hidden="true">
