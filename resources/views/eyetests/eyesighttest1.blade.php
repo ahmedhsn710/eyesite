@@ -41,7 +41,7 @@
     
     function displayNextLetter() {
       var letterContainer = document.getElementById('letterContainer');
-      letterContainer.innerHTML = `<p class="letter my-auto" style="font-size: ${30 - 19/10 * currentLetterIndex}px; padding-top:30px">${pickRandomLetter()}</p>`;
+      letterContainer.innerHTML = `<p class="letter my-auto" style="font-size: ${30 - 3.2 * currentLetterIndex + 0.1 * currentLetterIndex * currentLetterIndex}px; padding-top:30px">${pickRandomLetter()}</p>`;
     }
     
     function checkInput() {
