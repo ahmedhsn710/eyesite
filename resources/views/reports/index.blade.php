@@ -18,6 +18,7 @@
           </button>
 
         </div>
+        <div class="container mx-4">
         <p class="text-base transform -translate-x-1/2">
           @php
           echo nl2br($report->result)
@@ -25,6 +26,7 @@
           <br>
           Score: {{$report->score}}/10
         </p>
+        </div>
         <p class="text-xs text-right">Date: {{$report->updated_at}}</p>
 
       </x-main-card>
@@ -56,7 +58,6 @@
                   Yes
                 </button>
               </form>
-            </form>
             </div>
           </div>
         </div>
