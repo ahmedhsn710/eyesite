@@ -52,23 +52,23 @@
       attempts++;
       currentLetterIndex++;
       inputField.value = '';
-        if(currentLetterIndex < 10){
+        if(currentLetterIndex < 12){
           displayNextLetter();
         }
       }
       else {
         currentLetterIndex++;
         inputField.value = '';
-        if(currentLetterIndex < 10){
+        if(currentLetterIndex < 12){
           displayNextLetter();
         }
       }
-      if (currentLetterIndex === 10) {
+      if (currentLetterIndex === 12) {
         inputField.disabled = true;
         document.getElementById("results_test_type").value = "eyesight"
         document.getElementById("results_result").value = 
-            `The chance your eyesight is weak is ${Math.round(((10 - attempts) * 100 / 10) * 100) / 100}%`
-        document.getElementById("results_score").value = `${Math.ceil(attempts * 10 / 10)}`
+            `The chance your eyesight is weak is ${Math.round(((12 - attempts) * 100 / 12) * 100) / 100}%`
+        document.getElementById("results_score").value = `${Math.ceil(attempts * 10 / 12)}`
         document.getElementById("results_save").click();
       }
     }
