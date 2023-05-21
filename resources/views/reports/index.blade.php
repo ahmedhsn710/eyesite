@@ -1,11 +1,16 @@
 <x-app-layout>
   <x-main-card :border="true">
     <h2 style="padding-top: 30px; padding-bottom:30px; font-family:'Fredoka', Courier, monospace; font-weight:bold; font-size:50px; text-align:center"><span class="colored-heading">R</span>eports</h2>
+    <p class="text-center" style=" padding-top: 6px; padding-bottom:20px; font-family:'Fredoka', Courier, monospace; font-size:20px;" id="instruction">
+      Use the score for each report as rough guide for whether a visit to a eye clinic is nessessary.<br>
+      Eyesight results hold more significance for day to day life as compared to the other test.<br>
+      If taking the test multiple times results in a test score of below 5 than you might want to get a check up.
+    </p>
     @if(count($reports) == 0)
-      <p class="m-4 p-3 border rounded">
-        No reports to show<br>
+      <div class="m-4 p-3 border rounded">
+        <p>No reports to show<br><br></p>
         <x-primary-button onclick="window.location.href='{{ route('eyetest') }}'">Take tests</x-primary-button>
-      </p>
+      </div>
     @else
       @foreach($reports as $report) 
       <x-main-card class="motion-safe:hover:scale-[1.01] transition-all duration-250 border shadow-sm" vert_space="1" padding="3">
@@ -18,13 +23,15 @@
           </button>
 
         </div>
+        <div class="container mx-4">
         <p class="text-base transform -translate-x-1/2">
           @php
           echo nl2br($report->result)
           @endphp
-          <br>
+          <br><br>
           Score: {{$report->score}}/10
         </p>
+        </div>
         <p class="text-xs text-right">Date: {{$report->updated_at}}</p>
 
       </x-main-card>
@@ -56,7 +63,6 @@
                   Yes
                 </button>
               </form>
-            </form>
             </div>
           </div>
         </div>
