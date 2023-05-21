@@ -6,7 +6,7 @@
             <div class="order-md-first">
                 <img src="{{ asset('images/aboutus.png') }}" alt="Image" class="img-fluid" id="aboutImg">
             </div>
-            <div class="col-6 order-md-last mb-3 mb-md-0 md:py-10" style="margin-left: 20px !important">
+            <div class="col-md-6 order-md-last mb-3 mb-md-0 md:py-10" style="margin-left: 20px !important">
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-8">
@@ -21,7 +21,7 @@
 
         <div class="row justify-content-around">
             <p class="mt-4 align-center col-md-3" style="text-align: center">
-                        <span style="color:purple; font-weight:500">Email:</span>  blahblah@gmail.com
+                <span style="color:purple; font-weight:500">Email:</span>  shayan.khan.xyz@gmail.com
             </p>
             <p class="mt-4 align-center col-md-3" style="text-align: center">
                 <span style="color:purple; font-weight:500">Contact Number:</span>   +92 333 3333333

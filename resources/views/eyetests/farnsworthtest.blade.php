@@ -18,6 +18,7 @@
         <div class="flex justify-center">
             <h2 style="padding-top: 30px; padding-bottom:40px; font-family:'Fredoka', Courier, monospace; font-weight:bold; font-size:40px;"> <span class="colored-heading">F</span>arns<span class="colored-heading">W</span>orth <span class="colored-heading">T</span>est</h2>
         </div>
+        <p class="text-center" style=" padding-top: 10px; padding-bottom:20px; font-family:'Fredoka', Courier, monospace; font-size:20px;" id="instruction">Rearrange each line from darkest on the left to brightest on the right</p>
         @php
             function generateRandomArray() {
                 $numbers = range(1, 10); // Create an array with numbers from 1 to 10
@@ -61,18 +62,17 @@
         <div class="row py-4">
             <div class="col">
                 <div id="results" class="mx-5" style="display: none;">
-                    <p id="resultsText" class="text-lg lh-sm"></p>
                     <form method="post" action="/reports" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="test_type" id="results_test_type" value="">
                         <input type="hidden" name="result" id="results_result" value="">
                         <input type="hidden" name="score" id="results_score" value="">
-                        <x-primary-button class="my-2">Save</x-primary-button>
+                        <button id="results_save">Save</button>
                     </form>
                 </div>
             </div>
             <div class="col">
-                <x-primary-button class="float-end mx-5" onclick="displayResult()">Finish</x-primary-button>
+                <x-primary-button class="float-end mx-5" onclick="saveResult()">Finish</x-primary-button>
             </div>
         </div>
         <script defer>
@@ -127,7 +127,7 @@
             });
 
              
-            function displayResult() {
+            function saveResult() {
                 let red, green, blue;
                 for (let i = 0; i < 3; i++) {
                     let h = "sortable-container" + i;
@@ -158,18 +158,50 @@
                     }
                 }
 
-                document.getElementById("results").style.display="block"
-                document.getElementById("resultsText").innerHTML = `Red Score : ${red} / 10<br>Green Score : ${green} / 10</br>Blue Score : ${blue} / 10`;
                 document.getElementById("results_test_type").value = "farnsworth"
-                let testResult = (red + green + blue) / 30
                 document.getElementById("results_result").value = 
-                    `${(10 - red) * 10}% deficiency in differentiating shades of red
-                    ${(10 - green) * 10}% deficiency in differentiating shades of green
-                    ${(10 - blue) * 10}% deficiency in differentiating shades of blue`
+                    `You have a dificiency of:
+                    ${(10 - red) * 100 / 10}% in differentiating shades of red
+                    ${(10 - green) * 100 / 10}% in differentiating shades of green
+                    ${(10 - blue) * 100 / 10}% in differentiating shades of blue`
                 document.getElementById("results_score").value = `${Math.ceil((red + green + blue) * 10 / 30)}`
+                document.getElementById("results_save").click();
             }
 
 
         </script>
     </x-main-card>
+    <div class="modal fade" id="tutorialModal" tabindex="-1" role="dialog" aria-labelledby="tutorialModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 style="font-weight:bold; font-size:24px;" class="modal-title" id="tutorialModalLabel"><span class="colored-heading">T</span>utorial</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p style="padding-top: 5px; padding-bottom:5px; font-size:18px;"><span class="colored-heading">Y</span>ou will be shown 3 lines of colored squares. You goal is to drag and drop each one such that the squares go from darkest on the left to brightest on the right in each line (Increase screen brightness for best results)<br>
+              Click on Finish when you think you have ordered the lines.</p>
+              <div class="row mt-4 justify-content-center">
+                <div>
+                <x-primary-button class="float-end" data-bs-dismiss="modal">
+                  Ok
+                </x-primary-button>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+  <script>
+    $(window).on('load', function() {
+        $('#tutorialModal').modal('show');
+    });
+  </script>
 </x-app-layout>

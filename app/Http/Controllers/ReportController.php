@@ -24,4 +24,13 @@ class ReportController extends Controller
 
         return redirect('/reports');
     }
+
+    public function destroy(Report $report) {
+        if($report->user_id != auth()->id()) {
+            abort(403, 'Unauthorized Action');
+        }
+        $report->delete();
+
+        return redirect('/reports');
+    }
 }

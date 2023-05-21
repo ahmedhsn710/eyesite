@@ -4,7 +4,7 @@
             <div class="order-md-first">
                 <img src="{{ asset('images/eyeforsite.png') }}" alt="Image" class="img-fluid">
             </div>
-            <div class="col-6 order-md-last mb-3 mb-md-0 md:py-10" style="margin-left: 20px !important">
+            <div class="col-md-6 order-md-last mb-3 mb-md-0 md:py-10" style="margin-left: 20px !important">
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-8">
